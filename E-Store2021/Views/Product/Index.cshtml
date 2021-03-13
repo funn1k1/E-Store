@@ -1,0 +1,452 @@
+﻿@model E_Store2021.ViewModels.ProductViewModel; 
+<div class="breadcrumbs">
+    <div class="container">
+        <ul class="breadcrumbs_list">
+            <li class="breadcrumbs_list-item">
+                <a href="#">Home</a>
+            </li>
+            <li class="breadcrumbs_list-item">
+                <a href="#">@Model?.Category?.CategoryName</a>
+            </li>
+            <li class="breadcrumbs_list-item">
+                <a href="#">@Model?.SubCategory?.SubCategoryName</a>
+            </li>
+            <li class="breadcrumbs_list-item">
+                <a href="#">@Model?.Product?.ProductName</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<section class="product-card">
+    <div class="container">
+        <div class="product-card_inner">
+            <div class="product-card_img-box product-item--sale">
+                <img src="@("~/images/content/" + @Model?.Product?.ImagePath)" asp-append-version="true" class="product-card_img" width="400px" height="400px">
+                <p class="product-card_price-old">
+                    2200$
+                </p>
+                <p class="product-card_price-new">
+                    2100$
+                </p>
+                <a class="product-card_link" href="#">
+                    Found it cheaper? Lower the price!
+                </a>
+            </div>
+            <div class="product-card_content">
+                <h1 class="product-card_title">
+                    @Model?.Product?.ProductName
+                </h1>
+                <p class="product-card_code">
+                    Product code: @Model?.Product?.ProductID
+                </p>
+                <div class="product-card_buttons">
+                    <a class="product-card_icon-favorite" href="#">
+                        <img src="~/images/favorite.png" alt="">
+                    </a>
+                    <a class="product-card_icon-stat" href="#">
+                        <img src="~/images/stat.png" alt="">
+                    </a>
+                    <a class="rate" href="">
+                        <div class="rate-yo" data-rateyo-rating="4">
+                        </div>
+                    </a>
+                </div>
+                <div class="tabs-wrapper product-card_tabs">
+                    <div class="tabs">
+                        <a class="tab product-card_tab tab--active" href="#product-1">Characteristics</a>
+                        <a class="tab product-card_tab" href="#product-2">Availability in the store</a>
+                    </div>
+                    <div class="tabs-container">
+                        <div id="product-1" class="tabs-content product-card_tab-content tabs-content--active">
+                            <ul class="product-card_list">
+                                <li class="product-card_item">
+                                    <div class="product-card_item-left">
+                                        Manufacturer
+                                    </div>
+                                    <div class="product-card_item-right">
+                                        USA - California
+                                    </div>
+                                </li>
+                                <li class="product-card_item">
+                                    <div class="product-card_item-left">
+                                        Quantity
+                                    </div>
+                                    <div class="product-card_item-right">
+                                        @Model?.Product?.Quantity
+                                    </div>
+                                </li>
+                                <li class="product-card_item">
+                                    <div class="product-card_item-left">
+                                        Year
+                                    </div>
+                                    <div class="product-card_item-right">
+                                        2020
+                                    </div>
+                                </li>
+                                <li class="product-card_item">
+                                    <div class="product-card_item-left">
+                                        Capacity
+                                    </div>
+                                    <div class="product-card_item-right">
+                                        128GB
+                                    </div>
+                                </li>
+                                <li class="product-card_item">
+                                    <div class="product-card_item-left">
+                                        Display
+                                    </div>
+                                    <div class="product-card_item-right">
+                                        6.7-inch Super Retina XDR display
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="product-card_more">
+                                <a href="#">More</a>
+                            </div>
+                            <div class="product-card_btn">
+                                <button>Buy</button>
+                            </div>
+                        </div>
+                        <div id="product-1" class="tabs-content product-card_tab-content">
+                            Content 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card_tabs">
+    <div class="container">
+        <div class="tas-wrapper">
+            <div class="tabs card_tab-box">
+                <a class="tab card_tab" href="#product-card_tabs-1">About Product</a>
+                <a class="tab card_tab" href="#product-card_tabs-2">Characteristics</a>
+                <a class="tab card_tab tab--active" href="#product-card_tabs-3">Reviews</a>
+                <a class="tab card_tab" href="#product-card_tabs-4">Delivery</a>
+                <a class="tab card_tab" href="#product-card_tabs-5">Service</a>
+                <a class="tab card_tab" href="#product-card_tabs-6">Guarantee</a>
+            </div>
+            <div class="tabs-container">
+                <div id="product-card_tabs-1" class="card_tab-content tabs-content">content</div>
+                <div id="product-card_tabs-2" class="card_tab-content tabs-content">content</div>
+                <div id="product-card_tabs-3" class="card_tab-content tabs-content tabs-content--active">
+                    <div class="product-rating_wrap">
+                        <div class="product-avg_rating">
+                            <span>4.5</span> (Overall)
+                        </div>
+                        <div class="reviews">
+
+                                @if (Model?.Reviews != null)
+                                    @foreach (var review in @Model.Reviews)
+                                    {
+                                        <div class="reviews_wrapper">
+                                            <div class="review-title_rating">
+                                                <h3>Christopher Lee</h3>
+                                                <a class="rate" href="">
+                                                    <div class="rateYo-review" data-rateyo-rating="5">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <p class="review">
+                                                @review.Text
+                                            </p>
+                                        </div>
+                                    }
+                        </div>
+                        <div class="rating-form_wrapper">
+                            <h3>Add your Comments</h3>
+                            <form asp-action="AddReview" method="get">
+                                <div class="rate-review">
+                                    <span>Rating</span>
+                                    <a class="rate" href="">
+                                        <div class="rateYo-review" data-rateyo-rating="4">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="add_review">
+                                    <div class="review-name_lastname">
+                                        <div class="review-name">
+                                            <label for="review-input">Name</label>
+                                            <input id="review-input" placeholder="Enter name" type="text">
+                                        </div>
+                                        <div class="review-lastname">
+                                            <label for="review-input">LastName</label>
+                                            <input id="review-input" placeholder="Enter LastName" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper_your-review">
+                                        <label for="review-input">Your Review</label>
+                                        <textarea name="text" class="your_review" placeholder="Write a Review"></textarea>
+                                    </div>
+                                    <input type="hidden" name="id" value="@Model?.Product?.ProductID" />
+                                    <button>Add Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="product-card_tabs-4" class="card_tab-content tabs-content">content</div>
+                <div id="product-card_tabs-5" class="card_tab-content tabs-content">content</div>
+                <div id="product-card_tabs-6" class="card_tab-content tabs-content">content</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products">
+    <div class="container">
+        <div class="products_inner">
+            <h4 class="product-title">Buy with these goods</h4>
+            <div class="tabs-wrapper">
+                <div class="tabs products_tabs">
+                    <a class="tab products_tab tab--active" href="#popular-tab-1">Electronics</a>
+                    <a class="tab products_tab" href="#popular-tab-2">Computers</a>
+                    <a class="tab products_tab" href="#popular-tab-3">Accessories</a>
+                    <a class="tab products_tab" href="#popular-tab-4">Software</a>
+                    <a class="tab products_tab" href="#popular-tab-5">Arts</a>
+                    <a class="tab products_tab" href="#popular-tab-6">Games</a>
+                </div>
+                <div class="tabs-container products_container">
+                    <div id="popular-tab-1" class="tabs-content products_content tabs-content--active">
+                        <div class="product-slider">
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item product-item--sale" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper product-item_not-available">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item product-item--sale" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper product-item_not-available">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item product-item--sale" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper product-item_not-available">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item product-item--sale" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popular-tab-2" class="tabs-content products_content">
+                        <div class="product-slider">
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item product-item--sale" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-slider_item">
+                                <div class="product-item_wrapper product-item_not-available">
+                                    <button class="product-item_favorite" type="button"></button>
+                                    <button class="product-item_basket">
+                                        <img src="~/images/cart.png" alt="">
+                                    </button>
+                                    <a class="product-item_notify-link" href="#">
+                                        <span>Notify on arrival</span>
+                                    </a>
+                                    <a class="product-item" href="#">
+                                        <p class="product-item_hover-text">
+                                            View product
+                                        </p>
+                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
+                                        <p class="product-item_price">
+                                            1.520$
+                                        </p>
+                                        <p class="product-item_notify-text">
+                                            Not available
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popular-tab-3" class="tabs-content products_content">
+                        Slider3
+                    </div>
+                    <div id="popular-tab-4" class="tabs-content products_content">
+                        Slider4
+                    </div>
+                    <div id="popular-tab-5" class="tabs-content products_content">
+                        Slider5
+                    </div>
+                    <div id="popular-tab-6" class="tabs-content products_content">
+                        Slider6
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
