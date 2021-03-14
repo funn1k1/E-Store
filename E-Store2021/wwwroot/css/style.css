@@ -590,6 +590,11 @@ body {
   z-index: 100;
 }
 
+.cart-img{
+    position: absolute;
+    left: 15px;
+}
+
 .product-item_hover-text{
   padding: 18px 21px;
   background-color: rgba(255, 255, 255, 9);

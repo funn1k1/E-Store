@@ -266,7 +266,7 @@
                                                     <span>Notify on arrival</span>
                                                 </a>
                                                 <a class="product-item" href="#">
-                                                    <p class="product-item_hover-text">
+                                                    <p asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
                                                         View product
                                                     </p>
                                                     <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">
@@ -302,7 +302,7 @@
                                                     <span>Notify on arrival</span>
                                                 </a>
                                                 <a class="product-item" href="#">
-                                                    <p class="product-item_hover-text">
+                                                    <p asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
                                                         View product
                                                     </p>
                                                     <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">

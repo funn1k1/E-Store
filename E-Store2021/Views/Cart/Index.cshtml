@@ -4,6 +4,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="~/css/cart.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/css/style.css">
+<style>
+    a:hover{
+        text-decoration: none;
+    }
+</style>
 <div>
     <div class="container">
         <div class="row">
@@ -79,7 +84,7 @@
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
                         </dl>
-                        <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                        <hr> <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a asp-controller="Catalog" asp-action="Index" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                     </div>
                 </div>
             </aside>
