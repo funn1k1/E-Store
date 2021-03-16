@@ -34,8 +34,9 @@
                                                     <div class="aside"><img src="@("~/images/content/" + item.Product.ImagePath)" asp-append-version="true" class="img-sm"/></div>
                                                     <figcaption class="info">
                                                         <a href="#" class="title text-dark" data-abc="true">@item.Product.ProductName</a>
-                                                        <p class="text-muted small">Category: <br> Brand: @item?.Product?.Company?.CompanyName</p>
+                                                        <p class="text-muted small">Category: @item?.Product?.SubCategory?.Category?.CategoryName</p>
                                                         <p class="text-muted small">SubCategory: @item.Product?.SubCategory?.SubCategoryName</p>
+                                                        <p class="text-muted small">Brand: @item.Product?.Company?.CompanyName</p>
                                                     </figcaption>
                                                 </figure>
                                             </td>
@@ -50,10 +51,9 @@
                                             <td>
                                                 <div class="price-wrap"> <var class="price">@item.Product.UnitPrice</var> <small class="text-muted"> $9.20 each </small> </div>
                                             </td>
-                                            <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true"> Remove</a> </td>
+                                            <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" asp-controller="Favorite" asp-action="Add" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true"> Remove</a> </td>
                                         </tr>
                                     }
-
                             </tbody>
                         </table>
                     </div>

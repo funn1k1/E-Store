@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace E_Store2021.Models
 {
-    public class ShoppingCartItem
+    public class FavoriteItem
     {
-        public int ShoppingCartItemID { get; set; }
+        public int FavoriteItemID { get; set; }
 
-        
         public Product Product { get; set; }
 
-        public int Quantity { get; set; }
+        public int? ShoppingCartID { get; set; }
     }
 }

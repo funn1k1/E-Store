@@ -1,0 +1,50 @@
+﻿@using E_Store2021.ViewModels
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/cart.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/style.css">
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+    .favorite-row {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .favorite-col{
+        width: 100%;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-borderless table-shopping-cart">
+                <thead class="text-muted">
+                    <tr class="small text-uppercase">
+                        <th scope="col">Product</th>
+                        <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (FavoriteModel.FavoriteItems != null)
+                        @foreach (var item in FavoriteModel.FavoriteItems)
+                        {
+                            <tr class="favorite-row">
+                                <td class="favorite-col">
+                                    <figure class="itemside align-items-center">
+                                        <div class="aside"><img src="@("~/images/content/" + item.Product.ImagePath)" asp-append-version="true" class="img-sm" /></div>
+                                        <figcaption class="info">
+                                            <a href="#" class="title text-dark" data-abc="true">@item.Product.ProductName</a>
+                                        </figcaption>
+                                        
+                                    </figure>
+                                </td>
+                                <td class="text-right d-none d-md-block favorite-col"> <a data-original-title="Remove from Wishlist" title="" asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a></td>
+                            </tr>
+                        }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

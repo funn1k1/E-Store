@@ -3,10 +3,20 @@ $(function()
     $('.banner-section_slider').slick({
         dots: true,
         prevArrow: '<button class="banner-section_slider-btn banner-section_slider-btnprev"><img src="images/left-arrow.png" alt=""></button>',
-        nextArrow: '<button class="banner-section_slider-btn banner-section_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>'
+        nextArrow: '<button class="banner-section_slider-btn banner-section_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>',
+
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    arrows: false
+                }
+            },
+        ]
+
     });
 
-    $('.tab').on('click', function(e){
+    $('.tab').on('click', function (e) {
         e.preventDefault();
 
         $($(this).siblings()).removeClass('tab--active');
@@ -17,7 +27,7 @@ $(function()
         $($(this).attr('href')).addClass('tabs-content--active');
     });
 
-    $('.product-item_favorite').on('click', function(){
+    $('.product-item_favorite').on('click', function () {
         $($(this)).toggleClass('product-item_favorite--active');
     });
 
@@ -25,8 +35,43 @@ $(function()
         slidesToShow: 4,
         slidesToScroll: 1,
         prevArrow: '<button class="product-slider_slider-btn product-slider_slider-btnprev"><img src="images/left-arrow.png" alt=""></button>',
-        nextArrow: '<button class="product-slider_slider-btn product-slider_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>'
+        nextArrow: '<button class="product-slider_slider-btn product-slider_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>',
+
+        responsive: [
+            {
+                breakpoint: 1301,
+                settings: {
+                    arrows: false,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 1201,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 3,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 870,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 2,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 590,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1,
+                    dots: true,
+                }
+            },
+        ]
     });
+
 
     $('.filter-style').styler();
 
@@ -86,5 +131,20 @@ $(function()
     $(".rateYo-review").rateYo({
         starWidth: "20px",
     });
+
+    $('.footer_top-drop').on('click', function () {
+        $(this).next().slideToggle();
+        $(this).toggleClass('footer_top-drop--active');
+    });
+
+    $(".rateYo-review").rateYo({
+        starWidth: "20px",
+    });
+
+    $(".menu_btn").on('click', function() {
+        $('.menu-mobile_list').toggleClass('menu-mobile_list--active')
+    })
+
+
 });
 

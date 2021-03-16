@@ -39,6 +39,8 @@ namespace E_Store2021
             services.AddRazorPages();
 
             services.AddSession();
+            services.AddAuthentication();
+            services.AddAuthorization();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

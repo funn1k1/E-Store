@@ -1,6 +1,7 @@
 ﻿using E_Store2021.Data;
 using E_Store2021.Models;
 using E_Store2021.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index(int id)
         {
             ProductViewModel product = new ProductController(_context).CreateProduct(id);
@@ -26,6 +28,7 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> AddReview(int? id, string text)
         {
             if (id == null)

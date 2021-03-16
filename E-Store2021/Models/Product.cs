@@ -18,6 +18,8 @@ namespace E_Store2021.Models
 
         public string Description { get; set; }
 
+        public int Year { get; set; }
+
         public string ImagePath { get; set; }
 
         [Display(Name = "Price")]

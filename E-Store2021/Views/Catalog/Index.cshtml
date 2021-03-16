@@ -2,7 +2,6 @@
 
 @using E_Store2021.Models.StaticModels;
 @using E_Store2021.ViewModels;
-
 <div class="breadcrumbs">
     <div class="container">
         <ul class="breadcrumbs_list">
@@ -44,8 +43,11 @@
         </div>
 
         <div class="catalog_inner">
+            <div class="aside_btn">
+                Filter
+            </div>
             <aside class="catalog_inner-aside aside-filter">
-                <div class="tabs-wrapper aside-filter_tabs">
+                <div class="tabs-wrapper tabs-wrapper--no-scroll aside-filter_tabs">
                     <div class="tabs">
                         <a class="tab aside-filter_tab tab--active" href="#filter1">
                             <span>Parameters</span>
@@ -143,7 +145,7 @@
                                             <datalist id="filter-search">
                                                 @foreach (var product in Model.ProductsPagination)
                                                 {
-                                                <option value="@product.ProductName">@product.ProductName</option>
+                                                    <option value="@product.ProductName">@product.ProductName</option>
 
                                                 }
 
@@ -180,12 +182,12 @@
                                         <div class="aside-filter_content">
                                             @foreach (var country in Model?.Countries)
                                             {
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox" name="countries" value="@country.CountryName" @Html.Raw(country.IsChecked ? "checked" : "") />
-                                                    @country.CountryName
-                                                </label>
-                                            </div>
+                                                <div class="aside-filter_content-box">
+                                                    <label class="aside-filter_content-label">
+                                                        <input class="filter-style" type="checkbox" name="countries" value="@country.CountryName" @Html.Raw(country.IsChecked ? "checked" : "") />
+                                                        @country.CountryName
+                                                    </label>
+                                                </div>
                                             }
                                         </div>
                                     </li>
@@ -205,12 +207,12 @@
                                         <div class="aside-filter_content">
                                             @foreach (var company in Model?.Companies)
                                             {
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox" name="companies" value="@company.CompanyName" @Html.Raw(company.IsChecked ? "checked" : "") />
-                                                    @company.CompanyName
-                                                </label>
-                                            </div>
+                                                <div class="aside-filter_content-box">
+                                                    <label class="aside-filter_content-label">
+                                                        <input class="filter-style" type="checkbox" name="companies" value="@company.CompanyName" @Html.Raw(company.IsChecked ? "checked" : "") />
+                                                        @company.CompanyName
+                                                    </label>
+                                                </div>
                                             }
                                         </div>
                                     </li>
@@ -249,7 +251,7 @@
                                     <img class="product-item_img" src="@("~/images/content/" + @product.ImagePath)" asp-append-version="true" width="200px" alt="">
                                     <h4 class="product-item_title">@product.ProductName</h4>
                                     <p class="product-item_price">
-                                        @product.UnitPrice$
+                                        $@product.UnitPrice
                                     </p>
                                     <p class="product-item_notify-text">
                                         Not available
@@ -348,7 +350,7 @@
             minLength: 1,
         });
 
-        $(".filter-search").on("change", function () {
+        $('.filter-search').on("change", function () {
             var searchText = $(this).val().toLowerCase();
             console.log(searchText);
             $(".product-item_wrapper .product-item_title").each(function () {
@@ -360,10 +362,16 @@
                 }
             })
         });
-
+        $('.aside_btn').on('click', function () {
+            $(this).next().slideToggle();
+        });
+        $(".menu_btn").on('click', function () {
+            $('.menu-mobile_list').toggleClass('menu-mobile_list--active')
+        })
+        $('.footer_top-drop').on('click', function () {
+            $(this).next().slideToggle();
+            $(this).toggleClass('footer_top-drop--active');
+        });
     });
 </script>
-
-
-<script src="~/js/jquery.flexdatalist.min.js"></script>
 

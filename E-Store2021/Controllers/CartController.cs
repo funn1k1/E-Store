@@ -34,7 +34,7 @@ namespace E_Store2021.Controllers
             if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") == null)
             {
                 List<ShoppingCartItem> cart = new List<ShoppingCartItem>();
-                cart.Add(new ShoppingCartItem { Product = _context.Products.FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
+                cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
@@ -44,7 +44,7 @@ namespace E_Store2021.Controllers
                 if (index != -1)
                     cart[index].Quantity++;
                 else
-                    cart.Add(new ShoppingCartItem { Product = _context.Products.FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
+                    cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return RedirectToAction("Index");

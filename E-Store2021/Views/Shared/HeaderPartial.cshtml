@@ -3,6 +3,11 @@
         <div class="container">
             <div class="header_top-inner">
                 <nav class="menu">
+                    <button class="menu_btn">
+                        <div class="menu_btn-line"></div>
+                        <div class="menu_btn-line"></div>
+                        <div class="menu_btn-line"></div>
+                    </button>
                     <ul class="menu_list">
                         <li class="menu_item">
                             <a href="#" class="menu_link">
@@ -31,7 +36,7 @@
                     </p>
                     <ul class="user-list">
                         <li class="user-list_item">
-                            <a href="#" class="user-list_link">
+                            <a asp-controller="Favorite" asp-action="Index" class="user-list_link">
                                 <i class="fas fa-heart"></i>
                             </a>
                         </li>
@@ -51,6 +56,112 @@
             </div>
         </div>
     </div>
+
+    <ul class="menu-mobile_list">
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-user-circle"></i>
+                <p>Sign In</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-user-circle"></i>
+                <p>Registration</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-heart"></i>
+                <p>Favorites</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Cart</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-store-alt"></i>
+                <p>Shops</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-percent"></i>
+                <p>Shares</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <i class="fas fa-shipping-fast"></i>
+                <p>Shipping and payment</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Electronics</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Computers</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Accessories</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Software</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Arts</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Games</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Movies</p>
+            </a>
+        </li>
+        <li class="menu-mobile_item">
+            <a class="menu-mobile_link" href="#">
+                <p>Books</p>
+            </a>
+        </li>
+    </ul>
+
+    <div class="menu_mobile-linewrapper">
+        <ul class="menu_mobile-line">
+            <li class="menu_item">
+                <a class="menu_link" href="#">
+                    Shops
+                </a>
+            </li>
+            <li class="menu_item">
+                <a class="menu_link" href="#">
+                    Shares
+                </a>
+            </li>
+            <li class="menu_item">
+                <a class="menu_link" href="#">
+                    Shipping and payment
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <div class="header_bottom">
         <div class="container">
             <ul class="menu-categories">
