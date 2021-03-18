@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,7 +25,7 @@ namespace E_Store2021.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
             ShoppingCartModel.ShoppingCartItems = cart;
-            ShoppingCartModel.Total = cart?.Sum(item => item.Product.UnitPrice * item.Quantity);
+            ShoppingCartModel.Total = Math.Ceiling((decimal)cart?.Sum(item => item.Product.UnitPrice * item.Quantity));
             ShoppingCartModel.Count = cart?.Sum(item => item.Quantity);
             return View();
         }
@@ -35,7 +36,7 @@ namespace E_Store2021.Controllers
             if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") == null)
             {
                 List<ShoppingCartItem> cart = new List<ShoppingCartItem>();
-                cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
+                cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1, TotalPrice = Math.Ceiling(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice)});
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
@@ -43,9 +44,13 @@ namespace E_Store2021.Controllers
                 List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
                 int index = IsExist(id);
                 if (index != -1)
+                {
                     cart[index].Quantity++;
+                    cart[index].TotalPrice = Math.Ceiling(cart[index].Product.UnitPrice * cart[index].Quantity); 
+                   
+                }                    
                 else
-                    cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1 });
+                    cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1, TotalPrice = Math.Ceiling(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice) });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return RedirectToAction("Index");

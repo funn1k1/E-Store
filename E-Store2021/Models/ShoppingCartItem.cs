@@ -13,5 +13,7 @@ namespace E_Store2021.Models
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
+
+        public double TotalPrice { get; set; }
     }
 }
