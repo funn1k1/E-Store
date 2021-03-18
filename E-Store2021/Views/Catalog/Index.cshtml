@@ -339,7 +339,7 @@
             $('.js-range-slider').data('to', localStorage.getItem('endPrice'));
             $('#endPrice').attr('value', localStorage.getItem("endPrice"))
         }
-
+        
         function Contains(text1, text2) {
             if (text1.indexOf(text2) != -1)
                 return true;
@@ -372,6 +372,8 @@
             $(this).next().slideToggle();
             $(this).toggleClass('footer_top-drop--active');
         });
+
+
     });
 </script>
 

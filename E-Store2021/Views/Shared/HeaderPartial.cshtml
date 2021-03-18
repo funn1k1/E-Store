@@ -48,7 +48,10 @@
                         <li class="user-list_item">
                             <div href="" class="user-list_link cart">
                                 <a asp-controller="Cart" asp-action="Index" class="fas fa-shopping-cart"></a>
-                                <p class="cart_num">1</p>
+                                @{ 
+                                    int count = ShoppingCartModel.Count ?? 0;
+                                }
+                                <p class="cart_num">@count</p>
                             </div>
                         </li>
                     </ul>
