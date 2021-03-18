@@ -145,6 +145,5 @@ $(function()
         $('.menu-mobile_list').toggleClass('menu-mobile_list--active')
     })
 
-
 });
 

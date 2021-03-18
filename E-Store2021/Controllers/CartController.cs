@@ -25,7 +25,7 @@ namespace E_Store2021.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
             ShoppingCartModel.ShoppingCartItems = cart;
-            ShoppingCartModel.Total = Math.Ceiling((decimal)cart?.Sum(item => item.Product.UnitPrice * item.Quantity));
+            ShoppingCartModel.Total = Math.Round((decimal)cart?.Sum(item => item.Product.UnitPrice * item.Quantity), 2);
             ShoppingCartModel.Count = cart?.Sum(item => item.Quantity);
             return View();
         }
@@ -36,7 +36,8 @@ namespace E_Store2021.Controllers
             if (SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") == null)
             {
                 List<ShoppingCartItem> cart = new List<ShoppingCartItem>();
-                cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1, TotalPrice = Math.Ceiling(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice)});
+                cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1,
+                    TotalPrice = Math.Round(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice, 2) });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
@@ -46,11 +47,12 @@ namespace E_Store2021.Controllers
                 if (index != -1)
                 {
                     cart[index].Quantity++;
-                    cart[index].TotalPrice = Math.Ceiling(cart[index].Product.UnitPrice * cart[index].Quantity); 
-                   
-                }                    
+                    cart[index].TotalPrice = Math.Round(cart[index].Product.UnitPrice * cart[index].Quantity, 2);
+
+                }
                 else
-                    cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1, TotalPrice = Math.Ceiling(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice) });
+                    cart.Add(new ShoppingCartItem { Product = _context.Products.Include(p => p.SubCategory).ThenInclude(p => p.Category).Include(p => p.Company).FirstOrDefault(p => p.ProductID == id), Quantity = 1,
+                        TotalPrice = Math.Round(_context.Products.FirstOrDefault(p => p.ProductID == id).UnitPrice, 2) });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return RedirectToAction("Index");
@@ -70,6 +72,17 @@ namespace E_Store2021.Controllers
         }
 
         [AllowAnonymous]
+        public IActionResult UpdateQuantity(int id, int quantity)
+        {
+            List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
+
+            int index = IsExist(id);
+
+
+            return View();
+        }
+
+        [AllowAnonymous]
         private int IsExist(int id)
         {
             List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
@@ -80,5 +93,7 @@ namespace E_Store2021.Controllers
             }
             return -1;
         }
+
+
     }
 }

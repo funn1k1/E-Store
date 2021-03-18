@@ -5,7 +5,7 @@
 <link href="~/css/cart.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/css/style.css">
 <style>
-    a:hover{
+    a:hover {
         text-decoration: none;
     }
 </style>
@@ -31,7 +31,7 @@
                                         <tr>
                                             <td>
                                                 <figure class="itemside align-items-center">
-                                                    <div class="aside"><img src="@("~/images/content/" + item?.Product?.ImagePath)" asp-append-version="true" class="img-sm"/></div>
+                                                    <div class="aside"><img src="@("~/images/content/" + item?.Product?.ImagePath)" asp-append-version="true" class="img-sm" /></div>
                                                     <figcaption class="info">
                                                         <a href="#" class="title text-dark" data-abc="true">@item?.Product?.ProductName</a>
                                                         <p class="text-muted small">Category: @item?.Product?.SubCategory?.Category?.CategoryName</p>
@@ -40,18 +40,23 @@
                                                     </figcaption>
                                                 </figure>
                                             </td>
-                                            <td>
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>
+                                            <td style="width: 30%">
+                                                <form asp-action="ChangeQuantity" method="post">
+                                                    <input type="number" value="@item.Quantity" min="0" max="@item.Product.Quantity" step="1" name="quantity"/>
+                                                </form>
                                             </td>
                                             <td>
-                                                <div class="price-wrap"> <var class="price">$@item?.TotalPrice</var> <small class="text-muted"> $9.20 each </small> </div>
+                                                <div class="price-wrap"> 
+                                                    <var class="price">$@item?.TotalPrice</var> 
+                                                    <small class="text-muted">$@item.Product.UnitPrice each</small> 
+                                                </div>
                                             </td>
-                                            <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" asp-controller="Favorite" asp-action="Add" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true"> Remove</a> </td>
+                                            <td class="d-flex justify-content-center"> 
+                                                <a data-original-title="Save to Wishlist" title="" asp-controller="Favorite" asp-action="Add" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true"> 
+                                                    <i class="fa fa-heart"></i>
+                                                </a> 
+                                                <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true">Remove</a> 
+                                            </td>
                                         </tr>
                                     }
                             </tbody>
@@ -84,10 +89,19 @@
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
                         </dl>
-                        <hr> <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a asp-controller="Catalog" asp-action="Index" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                        <hr>
+                        <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Make Purchase</a>
+                        <a asp-controller="Catalog" asp-action="Index" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                        <a asp-controller="Cart" asp-action="Index" class="btn btn-out btn-primary btn-warning btn-square btn-main mt-2" data-abc="true">Apply Changes</a>
                     </div>
                 </div>
             </aside>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("input[type='number']").inputSpinner();
+    });
+</script>
