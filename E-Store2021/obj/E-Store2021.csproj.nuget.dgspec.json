@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\E-Store2021\\E-Store2021\\E-Store2021.csproj": {}
+    "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\E-Store2021.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\E-Store2021\\E-Store2021\\E-Store2021.csproj": {
+    "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\E-Store2021.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\E-Store2021\\E-Store2021\\E-Store2021.csproj",
+        "projectUniqueName": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\E-Store2021.csproj",
         "projectName": "E-Store2021",
-        "projectPath": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\E-Store2021\\E-Store2021\\E-Store2021.csproj",
+        "projectPath": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\E-Store2021.csproj",
         "packagesPath": "C:\\Users\\yukov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\E-Store2021\\E-Store2021\\obj\\",
+        "outputPath": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yukov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,39 +42,39 @@
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
