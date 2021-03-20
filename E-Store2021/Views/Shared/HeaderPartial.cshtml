@@ -41,14 +41,19 @@
                             </a>
                         </li>
                         <li class="user-list_item">
-                            <a href="#" class="user-list_link">
+                            <a asp-controller="Admin" asp-action="Index" class="user-list_link">
                                 <i class="fas fa-user-circle"></i>
+                            </a>
+                        </li>
+                        <li class="user-list_item">
+                            <a asp-controller="Orders" asp-action="Index" class="user-list_link">
+                                <i class="fas fa-clipboard-list"></i>
                             </a>
                         </li>
                         <li class="user-list_item">
                             <div href="" class="user-list_link cart">
                                 <a asp-controller="Cart" asp-action="Index" class="fas fa-shopping-cart"></a>
-                                @{ 
+                                @{
                                     int count = ShoppingCartModel.Count ?? 0;
                                 }
                                 <p class="cart_num">@count</p>

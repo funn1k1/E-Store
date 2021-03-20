@@ -246,3 +246,4 @@ C:\Users\yukov\OneDrive\Рабочий стол\E-Store2021\E-Store2021\obj\Debu
 C:\Users\yukov\OneDrive\Рабочий стол\E-Store2021\E-Store2021\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\E-Store2021\E-Store2021\obj\Debug\net5.0\Razor\Views\Favorite\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\E-Store2021\E-Store2021\obj\Debug\net5.0\Razor\Views\Contacts\Index.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\E-Store2021\E-Store2021\obj\Debug\net5.0\Razor\Views\Orders\Index.cshtml.g.cs

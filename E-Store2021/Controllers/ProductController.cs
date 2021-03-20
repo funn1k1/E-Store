@@ -67,12 +67,15 @@ namespace E_Store2021.Controllers
 
             Category category = _context.Categories.FirstOrDefault(c => c.CategoryID == categoryId);
 
+            Company company = _context.Companies.FirstOrDefault(c => c.CompanyID == product.CompanyID);
+
             ProductViewModel productView = new ProductViewModel
             {
                 Product = product,
                 SubCategory = subCategory,
                 Category = category,
                 Reviews = reviews,
+                Company = company,
             };
 
             return productView;

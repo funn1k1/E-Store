@@ -25,7 +25,7 @@ namespace E_Store2021.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
             ShoppingCartModel.ShoppingCartItems = cart;
-            ShoppingCartModel.Total = Math.Round((decimal)cart?.Sum(item => item.Product.UnitPrice * item.Quantity), 2);
+            ShoppingCartModel.Total = (cart != null) ? Math.Round((decimal)cart?.Sum(item => item.Product.UnitPrice * item.Quantity), 2) : 0m;
             ShoppingCartModel.Count = cart?.Sum(item => item.Quantity);
             return View();
         }

@@ -27,7 +27,7 @@
                     2200$
                 </p>
                 <p class="product-card_price-new">
-                    2100$
+                    @Model?.Product?.UnitPrice$
                 </p>
                 <a class="product-card_link" href="#">
                     Found it cheaper? Lower the price!
@@ -65,7 +65,7 @@
                                         Manufacturer
                                     </div>
                                     <div class="product-card_item-right">
-                                        USA - California
+                                        @Model?.Company.CompanyName
                                     </div>
                                 </li>
                                 <li class="product-card_item">
@@ -92,8 +92,8 @@
                                 <button>Buy</button>
                             </div>
                         </div>
-                        <div id="product-1" class="tabs-content product-card_tab-content">
-                            Content 2
+                        <div id="product-2" class="tabs-content product-card_tab-content">
+                            <p>@((Model?.Product.Quantity > 0) ? Html.Raw("Available") : Html.Raw("Not available") )</p>
                         </div>
                     </div>
                 </div>
