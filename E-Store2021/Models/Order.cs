@@ -7,6 +7,8 @@ namespace E_Store2021.Models
 {
     public class Order
     {
+        public int OrderID { get; set; }
+
         public string FirstName { get; set; }
         
         public string LastName { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Store2021.Models
 {
-    public class ApplicationUser: IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }
 
@@ -21,5 +21,7 @@ namespace E_Store2021.Models
         public string Gender { get; set; }
 
         public DateTime BirthDate { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
     }
 }
