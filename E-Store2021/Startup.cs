@@ -1,5 +1,6 @@
 
 using E_Store2021.Data;
+using E_Store2021.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,8 +30,10 @@ namespace E_Store2021
                 options => options.UseSqlServer(Configuration.GetConnectionString("AspNetRunConnection")
             ));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                     .AddEntityFrameworkStores<ApplicationDbContext>()
+                     .AddDefaultUI()
+                     .AddDefaultTokenProviders();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -35,6 +35,12 @@
                         60 Jefferson St. Brooklyn, NY 11218
                     </p>
                     <ul class="user-list">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="user-list_item">
+                                <a asp-controller="Admin" asp-action="Index" class="user-list_link">Hi, @User.Identity.Name!</a>
+                            </li>
+                        }
                         <li class="user-list_item">
                             <a asp-controller="Favorite" asp-action="Index" class="user-list_link">
                                 <i class="fas fa-heart"></i>

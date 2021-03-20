@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E_Store2021.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -38,6 +38,20 @@ namespace E_Store2021.Data
             modelBuilder.Entity<Country>().ToTable("Country");
 
             modelBuilder.Entity<Review>().ToTable("Review");
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("User");
+
+            modelBuilder.Entity<IdentityRole>().ToTable("Role");
+
+            modelBuilder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
+
+            modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
+
+            modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
+
+            modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
         }
     }
 }
