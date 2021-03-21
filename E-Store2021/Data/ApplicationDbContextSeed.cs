@@ -1,4 +1,6 @@
-﻿using E_Store2021.Models;
+﻿using E_Store2021.Enums;
+using E_Store2021.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,7 +12,7 @@ namespace E_Store2021.Data
 {
     public static class ApplicationDbContextSeed
     {
-        public static async Task SeedAsync(ApplicationDbContext _context, ILoggerFactory loggerFactory)
+        public static async Task SeedAsync(ApplicationDbContext _context, ILoggerFactory loggerFactory, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             try
             {
@@ -27,6 +29,9 @@ namespace E_Store2021.Data
 
                 await SeedReview(_context);
 
+                await SeedRoles(_context, roleManager);
+
+                await SeedSuperAdminAsync(userManager, roleManager);
             }
             catch(Exception ex)
             {
@@ -407,6 +412,38 @@ namespace E_Store2021.Data
             };
             _context.Reviews.AddRange(reviews);
             await _context.SaveChangesAsync();
+        }
+
+        private static async Task SeedRoles(ApplicationDbContext _context, RoleManager<IdentityRole> roleManager)
+        {
+            if (_context.Roles.Any()) return;
+            await roleManager.CreateAsync(new IdentityRole(Roles.SuperAdmin.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
+
+        }
+
+        private static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            var defaultUser = new ApplicationUser
+            {
+                UserName = "superadmin",
+                Email = "superadmin@mail.ru",
+                FirstName = "Eugene",
+                LastName = "Yukovich",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
+                Gender = "Male",
+            };
+            if (userManager.Users.All(u => u.Id != defaultUser.Id))
+            {
+                var user = await userManager.FindByEmailAsync(defaultUser.Email);
+                if (user == null)
+                {
+                    await userManager.CreateAsync(defaultUser, "Ewgeny245*");
+                    await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Roles.SuperAdmin.ToString());
+                }
+            }
         }
     }
 }

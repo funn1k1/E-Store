@@ -28,5 +28,7 @@ namespace E_Store2021.Models
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public ApplicationUser User { get; set; }
+
+        public int? ApplicationUserId { get; set; }
     }
 }

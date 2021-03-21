@@ -1,5 +1,7 @@
 using E_Store2021.Data;
+using E_Store2021.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -25,7 +27,9 @@ namespace E_Store2021
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    ApplicationDbContextSeed.SeedAsync(context, loggerFactory).GetAwaiter().GetResult();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    ApplicationDbContextSeed.SeedAsync(context, loggerFactory, userManager, roleManager).GetAwaiter().GetResult();
                 }
                 catch (Exception ex)
                 {
