@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using E_Store2021.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,6 +27,9 @@ namespace E_Store2021.Areas.Identity.Pages.Account.Manage
         }
 
         public string Username { get; set; }
+
+        [TempData]
+        public string UserNameChangeLimitMessage { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -94,7 +99,7 @@ namespace E_Store2021.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            UserNameChangeLimitMessage = $"You can change your username {user.UsernameChangeLimit} more time(s)";
             await LoadAsync(user);
             return Page();
         }
@@ -139,6 +144,40 @@ namespace E_Store2021.Areas.Identity.Pages.Account.Manage
             if (Input.Gender != gender)
             {
                 user.Gender = Input.Gender;
+            }
+
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    user.ProfilePicture = dataStream.ToArray();
+                }
+            }
+
+            if (user.UsernameChangeLimit > 0)
+            {
+                if (Input.Username != user.UserName)
+                {
+                    var userNameExists = await _userManager.FindByNameAsync(Input.Username);
+                    if (userNameExists != null)
+                    {
+                        StatusMessage = "User name already taken. Select a different username.";
+                        return RedirectToPage();
+                    }
+                    var setUserName = await _userManager.SetUserNameAsync(user, Input.Username);
+                    if (!setUserName.Succeeded)
+                    {
+                        StatusMessage = "Unexpected error when trying to set userName.";
+                        return RedirectToPage();
+                    }
+                    else
+                    {
+                        user.UsernameChangeLimit -= 1;
+                        await _userManager.UpdateAsync(user);
+                    }
+                }
             }
 
             await _userManager.UpdateAsync(user);
