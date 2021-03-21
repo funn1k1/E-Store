@@ -365,12 +365,6 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\E-Store2021.TagHelpers.input.cache
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\E-Store2021.TagHelpers.output.cache
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\E-Store2021.RazorCoreGenerate.cache
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Admin\Privacy.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
@@ -406,6 +400,12 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\ref\E-Store2021.dll
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\E-Store2021.pdb
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\E-Store2021.genruntimeconfig.cache
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
