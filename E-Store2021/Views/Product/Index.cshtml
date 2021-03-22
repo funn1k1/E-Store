@@ -89,7 +89,7 @@
                                 <a href="#">More</a>
                             </div>
                             <div class="product-card_btn">
-                                <button>Buy</button>
+                                <a class="buy" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model?.Product.ProductID">Buy</a>
                             </div>
                         </div>
                         <div id="product-2" class="tabs-content product-card_tab-content">
@@ -433,4 +433,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>

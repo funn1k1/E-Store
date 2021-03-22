@@ -38,10 +38,13 @@ namespace E_Store2021.Controllers
                     countryList.Add(R.EnglishName);
                 }
             }
-
+            Order order = new Order();
             countryList.Sort();
             ViewBag.CountryList = new SelectList(countryList);
-            return View();
+            return View(order);
         }
+
+
+        
     }
 }

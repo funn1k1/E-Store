@@ -90,7 +90,14 @@
                             <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
                         </dl>
                         <hr>
-                        <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Make Purchase</a>
+                        @if (@ShoppingCartModel.Total != 0)
+                        {
+                            <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Make Purchase</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main not-active" data-abc="true">Make Purchase</a>
+                        }
                         <a asp-controller="Catalog" asp-action="Index" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                         <a asp-controller="Cart" asp-action="Index" class="btn btn-out btn-primary btn-warning btn-square btn-main mt-2" data-abc="true">Apply Changes</a>
                     </div>
