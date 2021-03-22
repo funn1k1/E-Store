@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "o1QGQZ0fnGtAnsc6jAIUeWHc8vUu4Kc7bA9HylWGnWGExohjQBqePKFyi1McM7pkjNF9p6fT91wDib8EW8RHgA==",
+  "dgSpecHash": "8Io5tKRnyb1Iz8n4nbAUQrMWuBr5j81jbbQruAKl+FZMK6Exb5RUZPGdfRjX54rKAsLUOW8E3UtKgaGjSCzMhg==",
   "success": true,
   "projectFilePath": "C:\\Users\\yukov\\OneDrive\\Рабочий стол\\New folder (3)\\E-Store\\E-Store2021\\E-Store2021.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yukov\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\yukov\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.4\\microsoft.aspnetcore.authentication.facebook.5.0.4.nupkg.sha512",
     "C:\\Users\\yukov\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.4\\microsoft.aspnetcore.cryptography.internal.5.0.4.nupkg.sha512",
     "C:\\Users\\yukov\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.4\\microsoft.aspnetcore.cryptography.keyderivation.5.0.4.nupkg.sha512",
     "C:\\Users\\yukov\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.4\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.4.nupkg.sha512",

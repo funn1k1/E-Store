@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication;
+
 
 namespace E_Store2021
 {
@@ -42,7 +44,15 @@ namespace E_Store2021
             services.AddRazorPages();
 
             services.AddSession();
+
             services.AddAuthentication();
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
+
             services.AddAuthorization();
 
             services.AddDbContext<ApplicationDbContext>(options =>

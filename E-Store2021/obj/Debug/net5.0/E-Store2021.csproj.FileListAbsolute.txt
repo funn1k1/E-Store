@@ -412,3 +412,4 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\RoleManager\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\UserRoles\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\UserRoles\Manage.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
