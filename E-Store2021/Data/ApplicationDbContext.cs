@@ -23,6 +23,10 @@ namespace E_Store2021.Data
 
         public DbSet<Review> Reviews { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Coupon> Coupons { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -38,6 +42,10 @@ namespace E_Store2021.Data
             modelBuilder.Entity<Country>().ToTable("Country");
 
             modelBuilder.Entity<Review>().ToTable("Review");
+
+            modelBuilder.Entity<Order>().ToTable("Order");
+
+            modelBuilder.Entity<Coupon>().ToTable("Coupon");
 
             modelBuilder.Entity<ApplicationUser>().ToTable("User");
 

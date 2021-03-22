@@ -29,6 +29,6 @@ namespace E_Store2021.Models
 
         public ApplicationUser User { get; set; }
 
-        public int? ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
     }
 }

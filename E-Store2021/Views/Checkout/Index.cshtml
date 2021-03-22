@@ -25,7 +25,7 @@
                                 <h6 class="my-0">@item.Product.ProductName</h6>
                                 <small class="text-muted">Description</small>
                             </div>
-                            <span class="text-muted">$@item.Product.UnitPrice</span>
+                            <span class="text-muted">@(item.Quantity)x$@item.Product.UnitPrice</span>
                         </li>
                     }
                 <li class="list-group-item d-flex justify-content-between bg-light">
@@ -37,7 +37,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (USD)</span>
-                    <strong>$20</strong>
+                    <strong>@ShoppingCartModel.Total</strong>
                 </li>
             </ul>
         </div>
@@ -64,9 +64,6 @@
                 <div class="mb-3">
                     <label for="username">Username</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">dsaf</span>
-                        </div>
                         <input type="text" class="form-control" id="username" placeholder="Username" required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your username is required.
@@ -98,9 +95,7 @@
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
+                        <select class="custom-select d-block w-100" id="country" asp-items="ViewBag.CountryList" required>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.
@@ -108,10 +103,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                        </select>
+                        <input type="text" class="form-control" id="address" placeholder="State" required>
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>

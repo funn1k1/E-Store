@@ -23,5 +23,7 @@ namespace E_Store2021.Models
         public DateTime BirthDate { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<Coupon> Coupons { get; set; }
     }
 }

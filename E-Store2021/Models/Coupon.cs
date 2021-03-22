@@ -13,5 +13,9 @@ namespace E_Store2021.Models
 
         public DateTime ExpirationDate { get; set; }
 
+        public ApplicationUser User { get; set; }
+
+        public string ApplicationUserId { get; set; }
+
     }
 }
