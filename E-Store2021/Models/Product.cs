@@ -25,8 +25,6 @@ namespace E_Store2021.Models
         [Display(Name = "Price")]
         public double UnitPrice { get; set; }
 
-        public bool OnSale { get; set; }
-
         public double Star { get; set; }
 
         public int Quantity { get; set; }

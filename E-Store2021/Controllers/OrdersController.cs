@@ -17,7 +17,6 @@ namespace E_Store2021.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

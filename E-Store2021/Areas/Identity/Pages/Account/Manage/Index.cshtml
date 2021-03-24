@@ -5,7 +5,6 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
-
 <h4>@ViewData["Title"]</h4>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 <partial name="_StatusMessage" model="Model.UserNameChangeLimitMessage" />
@@ -16,14 +15,17 @@
             <div class="form-group">
                 <label asp-for="Input.Username"></label>
                 <input asp-for="Input.Username" class="form-control" />
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.FirstName"></label>
                 <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.LastName"></label>
                 <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Gender"></label>
@@ -31,14 +33,19 @@
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.BirthDate"></label>
                 <input asp-for="Input.BirthDate" class="form-control" type="datetime-local">
+                <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
+
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
             </div>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </div>

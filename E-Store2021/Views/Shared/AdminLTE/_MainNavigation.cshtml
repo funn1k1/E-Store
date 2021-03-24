@@ -46,12 +46,15 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item ">
-                    <a asp-controller="Admin" asp-action="Index" class="nav-link @Url.MakeActiveClass("admin", "index")">
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link ">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Profile
                         </p>
                     </a>
+                    <script>
+                        $("li#@(ViewContext.RouteData.Values["Controller"])-@(ViewContext.RouteData.Values["Action"])")).addClass("active");
+                    </script>
                 </li>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -62,9 +65,25 @@
                                 Privacy
                             </p>
                         </a>
-                    </li>       
-                }
+                    </li>
 
+                }
+                <li class="nav-item ">
+                    <a asp-controller="UserRoles" asp-action="Index" class="nav-link @Url.MakeActiveClass("admin", "index")">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Add Roles
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a asp-controller="RoleManager" asp-action="Index" class="nav-link @Url.MakeActiveClass("admin", "index")">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Manage Roles
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

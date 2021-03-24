@@ -1,0 +1,158 @@
+﻿@using E_Store2021.ViewModels
+@model Order
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/form-validation.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/style.css">
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">@(ShoppingCartModel.Count ?? 0)</span>
+            </h4>
+            <ul class="list-group mb-3">
+                @if (ShoppingCartModel.ShoppingCartItems != null)
+                    @foreach (var item in ShoppingCartModel.ShoppingCartItems)
+                    {
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">@item.Product.ProductName</h6>
+                                <small class="text-muted">Description:</small>
+                                <small class="text-muted">@item.Product.Description</small>
+                            </div>
+                            <span class="text-muted">@(item.Quantity)x$@item.Product.UnitPrice</span>
+                        </li>
+                    }
+                @if (ShoppingCartModel.CouponName != null)
+                {
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>@ShoppingCartModel.CouponName</small>
+                        </div>
+                        <span class="text-success">@ShoppingCartModel.Discount%</span>
+                    </li>
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$@(@ShoppingCartModel.Total ?? 0)</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="@UserManager?.GetUserAsync(User)?.Result?.FirstName" disabled required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="@UserManager?.GetUserAsync(User)?.Result?.LastName" disabled required>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <input type="text" value="@User.Identity.Name" class="form-control" id="username" placeholder="Username" disabled>
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" id="email" value="@UserManager?.GetUserAsync(User)?.Result?.Email" disabled placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                </div>
+            </div>
+
+            <form asp-controller="Checkout" asp-action="Index" method="post">
+                <input type="hidden" asp-for="@Model.UserId" value="@UserManager?.GetUserAsync(User)?.Result?.Id"/>
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" asp-for="@Model.Address" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" asp-for="@Model.Address2">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" id="country" asp-for="@Model.Country" asp-items="ViewBag.CountryList" required>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">State</label>
+                        <input asp-for="@Model.State" type="text" class="form-control" id="address" placeholder="State" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input asp-for="@Model.Zip" type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();</script>

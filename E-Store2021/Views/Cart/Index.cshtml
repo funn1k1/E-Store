@@ -1,5 +1,8 @@
 ﻿
 @using E_Store2021.ViewModels
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="~/css/cart.css" rel="stylesheet" />
@@ -42,20 +45,20 @@
                                             </td>
                                             <td style="width: 30%">
                                                 <form asp-action="ChangeQuantity" method="post">
-                                                    <input type="number" value="@item.Quantity" min="0" max="@item.Product.Quantity" step="1" name="quantity"/>
+                                                    <input type="number" value="@item.Quantity" min="0" max="@item.Product.Quantity" step="1" name="quantity" />
                                                 </form>
                                             </td>
                                             <td>
-                                                <div class="price-wrap"> 
-                                                    <var class="price">$@item?.TotalPrice</var> 
-                                                    <small class="text-muted">$@item.Product.UnitPrice each</small> 
+                                                <div class="price-wrap">
+                                                    <var class="price">$@item?.TotalPrice</var>
+                                                    <small class="text-muted">$@item.Product.UnitPrice each</small>
                                                 </div>
                                             </td>
-                                            <td class="d-flex justify-content-center"> 
-                                                <a data-original-title="Save to Wishlist" title="" asp-controller="Favorite" asp-action="Add" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true"> 
+                                            <td class="d-flex justify-content-center">
+                                                <a data-original-title="Save to Wishlist" title="" asp-controller="Favorite" asp-action="Add" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-toggle="tooltip" data-abc="true">
                                                     <i class="fa fa-heart"></i>
-                                                </a> 
-                                                <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true">Remove</a> 
+                                                </a>
+                                                <a asp-action="Remove" asp-route-id="@item.Product.ProductID" class="btn btn-light" data-abc="true">Remove</a>
                                             </td>
                                         </tr>
                                     }
@@ -67,10 +70,15 @@
             <aside class="col-lg-3">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <form>
+                        <form asp-action="UpdateCartPrice" method="post">
                             <div class="form-group">
                                 <label>Have coupon?</label>
-                                <div class="input-group"> <input type="text" class="form-control coupon" name="" placeholder="Coupon code"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                                <input type="hidden" name="id" value="@UserManager?.GetUserAsync(User)?.Result?.Id" />
+                                <div class="input-group"> <input type="text" class="form-control coupon" name="couponName" placeholder="Coupon code"> <span class="input-group-append"> <input type="submit" class="btn btn-primary btn-apply coupon" value="Apply"></span> </div>
+                                @if (ShoppingCartModel.Discount > 0)
+                                {
+                                    <span style="display: block; margin-top: 15px" class="text-success">Congrats! You have applied coupon.</span>
+                                }
                             </div>
                         </form>
                     </div>
@@ -81,22 +89,31 @@
                             <dt>Total price:</dt>
                             <dd class="text-right ml-3">$@ShoppingCartModel.Total</dd>
                         </dl>
-                        <dl class="dlist-align">
-                            <dt>Discount:</dt>
-                            <dd class="text-right text-danger ml-3">- $10.00</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
-                        </dl>
-                        <hr>
-                        @if (@ShoppingCartModel.Total != 0)
+                        @if (ShoppingCartModel.Discount != null)
                         {
-                            <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Make Purchase</a>
+                            <dl class="dlist-align">
+                                <dt>Discount:</dt>
+                                <dd class="text-right text-info ml-3">@ShoppingCartModel.Discount%</dd>
+                            </dl>
+                            <dl class="dlist-align">
+                                <dt>SpecialPrice:</dt>
+                                <dd class="text-danger">$@ShoppingCartModel.SpecialPrice</dd>
+                            </dl>
+
                         }
                         else
                         {
-                            <a asp-controller="Checkout" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main not-active" data-abc="true">Make Purchase</a>
+                            <span class="text-warning">You haven't applied coupon yet.</span>
+                        }
+
+                        <hr>
+                        @if (@ShoppingCartModel.Total != 0)
+                        {
+                            <a asp-controller="CheckoutInfo" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Make Purchase</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="CheckoutInfo" asp-action="Index" class="btn btn-out btn-primary btn-square btn-main not-active" data-abc="true">Make Purchase</a>
                         }
                         <a asp-controller="Catalog" asp-action="Index" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                         <a asp-controller="Cart" asp-action="Index" class="btn btn-out btn-primary btn-warning btn-square btn-main mt-2" data-abc="true">Apply Changes</a>

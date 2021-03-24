@@ -369,7 +369,6 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Admin\Privacy.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Catalog\Index.cshtml.g.cs
-C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Contacts\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Favorite\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
@@ -413,3 +412,5 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\UserRoles\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\UserRoles\Manage.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\CheckoutInfo\Index.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs

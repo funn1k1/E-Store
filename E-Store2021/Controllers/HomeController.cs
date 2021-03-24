@@ -16,7 +16,6 @@ namespace E_Store2021.Controllers
             this._context = _context;
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var catalog = await _context.Categories

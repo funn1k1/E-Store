@@ -39,23 +39,33 @@ namespace E_Store2021.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Required(ErrorMessage = "You must provide First Name")]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
-            
+
+            [Required(ErrorMessage = "You must provide Last Name")]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
+            [Required(ErrorMessage = "You must provide Username")]
             [Display(Name = "Username")]
             public string Username { get; set; }
+
+            [Required(ErrorMessage = "You must provide gender")]
 
             [Display(Name = "Gender")]
             public string Gender { get; set; }
 
+            [Required(ErrorMessage = "You must provide birthdate")]
             [Display(Name = "Date of Birth")]
             public DateTime BirthDate { get; set; }
 
-            [Phone]
-            [Display(Name = "Phone number")]
+            [Required(ErrorMessage = "You must provide a phone number")]
+            [Display(Name = "Phone Number")]
+            [DataType(DataType.PhoneNumber)]
+            [RegularExpression(@"^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$", ErrorMessage = "Invalid Phone Number")]
+
+
             public string PhoneNumber { get; set; }
 
             [Display(Name = "Profile Picture")]

@@ -19,7 +19,6 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Index(int id)
         {
             ProductViewModel product = new ProductController(_context).CreateProduct(id);
@@ -28,7 +27,6 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> AddReview(int? id, string text)
         {
             if (id == null)

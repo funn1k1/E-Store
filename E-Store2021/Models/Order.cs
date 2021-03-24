@@ -10,12 +10,6 @@ namespace E_Store2021.Models
     {
         public int OrderID { get; set; }
 
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
         public string Address { get; set; }
 
         public string Address2 { get; set; }
@@ -28,12 +22,10 @@ namespace E_Store2021.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public bool IsSave { get; set; }
-
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        public string ApplicationUserId { get; set; }
+        public string UserId { get; set; }
     }
 }

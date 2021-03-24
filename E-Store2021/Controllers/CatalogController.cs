@@ -23,7 +23,6 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ViewResult> Index(int pageNumber = 1)
         {
             List<CountryModel> countries = await _context.Countries.Include(c => c.Companies)
@@ -69,7 +68,6 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ViewResult> Filter(string[] countries, string[] companies, string category, string subCategory, double startPrice, double endPrice, int? pageNumber = 1)
         {
             List<CategoryModel> categoryModels = await _context.Categories.Include(c => c.SubCategories).ThenInclude(c => c.Products).ThenInclude(c => c.Company)

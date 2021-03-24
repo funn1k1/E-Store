@@ -21,13 +21,16 @@
 <section class="product-card">
     <div class="container">
         <div class="product-card_inner">
-            <div class="product-card_img-box product-item--sale">
+            <div class="product-card_img-box @(Model?.Product?.Discount > 0 ? "product-item--sale": "")">
                 <img src="@("~/images/content/" + @Model?.Product?.ImagePath)" asp-append-version="true" class="product-card_img" width="400px" height="400px">
-                <p class="product-card_price-old">
-                    2200$
-                </p>
+                @if (Model?.Product?.Discount > 0)
+                {
+                    <p class="product-card_price-old">
+                        @Model?.Product?.UnitPrice$
+                    </p>
+                }
                 <p class="product-card_price-new">
-                    @Model?.Product?.UnitPrice$
+                    @(Math.Round((decimal)(@Model?.Product?.UnitPrice-@Model?.Product?.UnitPrice*@Model?.Product?.Discount/100.0), 2))$
                 </p>
                 <a class="product-card_link" href="#">
                     Found it cheaper? Lower the price!

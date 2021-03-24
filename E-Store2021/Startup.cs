@@ -55,11 +55,6 @@ namespace E_Store2021
 
             services.AddAuthorization();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
-            });
-
             services.AddMvc(o =>
             {
                 var policy = new AuthorizationPolicyBuilder()

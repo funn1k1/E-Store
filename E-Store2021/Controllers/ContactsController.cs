@@ -9,7 +9,6 @@ namespace E_Store2021.Controllers
 {
     public class ContactsController : Controller
     {
-        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

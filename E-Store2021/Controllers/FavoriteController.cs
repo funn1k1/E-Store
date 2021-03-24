@@ -20,7 +20,6 @@ namespace E_Store2021.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
         public IActionResult Index()
         {
             var favorite = SessionHelper.GetObjectFromJson<List<FavoriteItem>>(HttpContext.Session, "favorite");
@@ -28,8 +27,6 @@ namespace E_Store2021.Controllers
             return View();
         }
 
-
-        [AllowAnonymous]
         public IActionResult Add(int id)
         {
             if (SessionHelper.GetObjectFromJson<List<FavoriteItem>>(HttpContext.Session, "favorite") == null)
@@ -49,7 +46,6 @@ namespace E_Store2021.Controllers
             return RedirectToAction("Index");
         }
 
-        [AllowAnonymous]
         public IActionResult Remove(int id)
         {
             List<FavoriteItem> favorite = SessionHelper.GetObjectFromJson<List<FavoriteItem>>(HttpContext.Session, "favorite");
@@ -62,7 +58,6 @@ namespace E_Store2021.Controllers
             return RedirectToAction("Index");
         }
 
-        [AllowAnonymous]
         private int IsExist(int id)
         {
             List<FavoriteItem> favorite = SessionHelper.GetObjectFromJson<List<FavoriteItem>>(HttpContext.Session, "favorite");

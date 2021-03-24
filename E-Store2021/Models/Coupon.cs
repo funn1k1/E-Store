@@ -9,13 +9,15 @@ namespace E_Store2021.Models
     {
         public int CouponID { get; set; }
 
+        public string Name { get; set; }
+
         public double Discount { get; set; }
 
         public DateTime ExpirationDate { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        public string ApplicationUserId { get; set; }
+        public string UserId { get; set; }
 
     }
 }
