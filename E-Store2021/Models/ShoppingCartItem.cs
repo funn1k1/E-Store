@@ -9,11 +9,12 @@ namespace E_Store2021.Models
     {
         public int ShoppingCartItemID { get; set; }
 
-        
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public int? ProductID { get; set; }
     }
 }

@@ -56,20 +56,16 @@
                         $("li#@(ViewContext.RouteData.Values["Controller"])-@(ViewContext.RouteData.Values["Action"])")).addClass("active");
                     </script>
                 </li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item ">
-                        <a asp-controller="Admin" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("admin", "index")">
-                            <i class="nav-icon fas fa-lock"></i>
-                            <p>
-                                Privacy
-                            </p>
-                        </a>
-                    </li>
-
-                }
                 <li class="nav-item ">
-                    <a asp-controller="UserRoles" asp-action="Index" class="nav-link @Url.MakeActiveClass("admin", "index")">
+                    <a asp-controller="ProductsManager" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Manage Products
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a asp-controller="UserRoles" asp-action="Index" class="nav-link">
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
                             Add Roles
@@ -77,7 +73,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a asp-controller="RoleManager" asp-action="Index" class="nav-link @Url.MakeActiveClass("admin", "index")">
+                    <a asp-controller="RoleManager" asp-action="Index" class="nav-link">
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
                             Manage Roles

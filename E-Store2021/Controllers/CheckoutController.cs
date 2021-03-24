@@ -17,10 +17,12 @@ namespace E_Store2021.Controllers
             _context = context;
         }
 
-        public IActionResult Index(Order order)
+        public async Task<IActionResult> Index(Order order)
         {
+            var coupon = _context.Coupons.FirstOrDefault(c => c.Name == ShoppingCartModel.CouponName);
+            _context.Coupons.Remove(coupon);
             _context.Orders.Add(order);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return View();
         }
     }

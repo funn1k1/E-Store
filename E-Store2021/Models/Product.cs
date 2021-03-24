@@ -31,11 +31,15 @@ namespace E_Store2021.Models
 
         public double Discount { get; set; }
 
+        public byte[] ProductPicture { get; set; }
+
         public int? SubCategoryID { get; set; }
 
         public int? CompanyID { get; set; }
 
         public virtual Company Company { get; set; }
+
+        
 
         public ICollection<Review> Reviews { get; set; }
 

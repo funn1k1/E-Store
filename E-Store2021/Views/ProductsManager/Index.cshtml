@@ -1,0 +1,42 @@
+﻿@using E_Store2021.ViewModels
+@model List<ProductViewModel>
+@{
+    ViewData["Title"] = "Products Manager";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<h1>Role Manager</h1>
+<form asp-controller="RoleManager" asp-action="AddRole" method="post">
+    <div class="input-group">
+        <input name="roleName" class="form-control w-25">
+        <span class="input-group-btn">
+            <button class="btn btn-info">Add New Role</button>
+        </span>
+    </div>
+</form>
+<form action="/" method="post">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>SubCategory</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+        <tr>
+            <td>@product.Product.ProductID</td>
+            <td>@product.Product.ProductName</td>
+            <td>@product.Product.SubCategory.SubCategoryName</td>
+            <td>@product.Product.SubCategory.Category.CategoryName</td>
+            <td>
+                <a class="btn btn-primary" asp-controller="ProductsManager" asp-action="ChangeProduct" asp-route-id="@product.Product.ProductID">Change Product</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+</form>

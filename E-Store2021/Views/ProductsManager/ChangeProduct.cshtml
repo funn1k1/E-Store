@@ -1,0 +1,62 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<h4>@ViewData["Title"]</h4>
+<form id="profile-form" asp-action="ChangeProduct" enctype="multipart/form-data"  method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.ProductID"></label>
+                <input asp-for="@Model.ProductID" class="form-control" />
+                <span asp-validation-for="@Model.ProductID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ProductName"></label>
+                <input asp-for="@Model.ProductName" class="form-control" />
+                <span asp-validation-for="@Model.ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Year"></label>
+                <input asp-for="@Model.Year" class="form-control" />
+                <span asp-validation-for="@Model.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Quantity"></label>
+                <input asp-for="@Model.Quantity" class="form-control" />
+                <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description"></label>
+                <textarea asp-for="@Model.Description" class="form-control"></textarea>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+
+            <input id="update-profile-button" type="submit" class="btn btn-primary"/>
+        </div>
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.ProductPicture" style="width: 100%"></label>
+                @if (Model.ProductPicture != null)
+                {
+                    <img id="profilePicture" style="width:400px; height:400px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ProductPicture))">
+                }
+                else
+                {
+                    <img id="profilePicture" style="width:400px;height:400px; object-fit: cover" src="">
+                }
+                <div class="form-group" id="customFile" lang="es">
+                    <input type="file"
+                           accept=".png,.jpg,.jpeg,.gif,.tif"
+                           asp-for="@Model.ProductPicture"
+                           style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                           onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
