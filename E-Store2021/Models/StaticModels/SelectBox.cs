@@ -11,5 +11,9 @@ namespace E_Store2021.Models.StaticModels
         public static IEnumerable<SelectListItem> Categories { get; set; }
 
         public static IEnumerable<SelectListItem> SubCategories { get; set; }
+
+        public static IEnumerable<SelectListItem> Companies { get; set; }
+
+        public static IEnumerable<SelectListItem> Countries { get; set; }
     }
 }

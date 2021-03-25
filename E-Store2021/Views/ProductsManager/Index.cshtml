@@ -5,16 +5,7 @@
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
 
-<h1>Role Manager</h1>
-<form asp-controller="RoleManager" asp-action="AddRole" method="post">
-    <div class="input-group">
-        <input name="roleName" class="form-control w-25">
-        <span class="input-group-btn">
-            <button class="btn btn-info">Add New Role</button>
-        </span>
-    </div>
-</form>
-<form action="/" method="post">
+<h1>Products Manager</h1>
     <table class="table table-striped">
     <thead>
         <tr>
@@ -30,8 +21,8 @@
         <tr>
             <td>@product.Product.ProductID</td>
             <td>@product.Product.ProductName</td>
-            <td>@product.Product.SubCategory.SubCategoryName</td>
-            <td>@product.Product.SubCategory.Category.CategoryName</td>
+            <td>@product.Product.SubCategory?.Category.CategoryName</td>
+            <td>@product.Product.SubCategory?.SubCategoryName</td>
             <td>
                 <a class="btn btn-primary" asp-controller="ProductsManager" asp-action="ChangeProduct" asp-route-id="@product.Product.ProductID">Change Product</a>
             </td>
@@ -39,4 +30,3 @@
         }
     </tbody>
 </table>
-</form>

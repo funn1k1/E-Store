@@ -248,7 +248,14 @@
                                     <p class="product-item_hover-text">
                                         View product
                                     </p>
-                                    <img class="product-item_img" src="@("~/images/content/" + @product.ImagePath)" asp-append-version="true" width="200px" alt="">
+                                    @if (product.ProductPicture != null)
+                                    {
+                                        <img id="profilePicture" style="width:200px;" src="data:image/*;base64,@(Convert.ToBase64String(@product.ProductPicture))">
+                                    }
+                                    else
+                                    {
+                                        <img id="profilePicture" style="width:200px;" src="">
+                                    }
                                     <h4 class="product-item_title">@product.ProductName</h4>
                                     <p class="product-item_price">
                                         $@product.UnitPrice

@@ -1,9 +1,11 @@
 ﻿using E_Store2021.Data;
 using E_Store2021.Models;
+using E_Store2021.Models.StaticModels;
 using E_Store2021.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -71,5 +73,35 @@ namespace E_Store2021.Controllers
             return View(prod);
         }
 
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            SelectBox.Categories = new SelectList(_context.Categories.ToList(), "CategoryID", "CategoryName");
+            SelectBox.SubCategories = new SelectList(_context.SubCategories.ToList(), "SubCategoryID", "SubCategoryName");
+            SelectBox.Companies = new SelectList(_context.Companies.ToList(), "CompanyID", "CompanyName");
+            SelectBox.Countries = new SelectList(_context.Countries.ToList(), "CountryID", "CountryName");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    product.ProductPicture = dataStream.ToArray();
+                }
+            }
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return View();
+        }
     }
 }

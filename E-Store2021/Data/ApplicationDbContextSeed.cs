@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -134,6 +135,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1695.66,
                     Year = 2016,
                     ImagePath = "iphone12.webp",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\iphone12.webp"),
                     Description = "Some phone",
                     Star = 5,
                     Quantity = 10,
@@ -147,6 +149,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2016,
                     ImagePath = "iphone11.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\iphone11.jpg"),
                     Description = "Some phone",
                     Star = 5,
                     Quantity = 10,
@@ -159,8 +162,9 @@ namespace E_Store2021.Data
                     SubCategoryID = subCategories.FirstOrDefault(s => s.SubCategoryName == "Phones").SubCategoryID,
                     UnitPrice = 1395.66,
                     Year = 2016,
-                    ImagePath = "iphone11.jpg",
+                    ImagePath = "xiaomi_9pro.jpg",
                     Description = "Some phone",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\xiaomi_9pro.jpg"),
                     Star = 5,
                     Quantity = 10,
                     Discount = 10,
@@ -173,6 +177,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2016,
                     ImagePath = "canon_sx540.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\canon_sx540.jpg"),
                     Description = "Some phone",
                     Star = 5,
                     Quantity = 10,
@@ -186,6 +191,7 @@ namespace E_Store2021.Data
                     UnitPrice = 397,
                     Year = 2016,
                     ImagePath = "panasonic_fz300.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\panasonic_fz300.jpg"),
                     Description = "Some phone",
                     Star = 5,
                     Quantity = 10,
@@ -199,6 +205,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2016,
                     ImagePath = "4k_digitalcamera_48mp.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\4k_digitalcamera_48mp.jpg"),
                     Description = "Some phone",
                     Star = 4.5,
                     Quantity = 10,
@@ -207,11 +214,12 @@ namespace E_Store2021.Data
                 },
                 new Product
                 {
-                    ProductName = "TOZO T10 Bluetooth 5.0", 
+                    ProductName = "TOZO T10 Bluetooth 5.0",
                     SubCategoryID = subCategories.FirstOrDefault(s => s.SubCategoryName == "Headphones").SubCategoryID,
                     UnitPrice = 1395.66,
                     Year = 2016,
                     ImagePath = "tozo_t10.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\tozo_t10.jpg"),
                     Description = "Some phone",
                     Star = 4.6,
                     Quantity = 10,
@@ -225,6 +233,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2016,
                     ImagePath = "tozo_t6.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\tozo_t6.jpg"),
                     Description = "Some phone",
                     Star = 4.5,
                     Quantity = 10,
@@ -238,6 +247,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2019,
                     ImagePath = "razer_kraken.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\razer_kraken.jpg"),
                     Description = "Some phone",
                     Star = 4.5,
                     Quantity = 10,
@@ -251,6 +261,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2018,
                     ImagePath = "playstation-4.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\playstation-4.jpg"),
                     Description = "Some phone",
                     Star = 4,
                     Quantity = 10,
@@ -264,6 +275,7 @@ namespace E_Store2021.Data
                     UnitPrice = 1395.66,
                     Year = 2020,
                     ImagePath = "playstation-spider.jpg",
+                    ProductPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\content\playstation-spider.jpg"),
                     Description = "Some phone",
                     Star = 5,
                     Quantity = 10,

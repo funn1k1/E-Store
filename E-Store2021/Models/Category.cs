@@ -9,7 +9,7 @@ namespace E_Store2021.Models
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Name")]
+        [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
 
         public string ImagePath { get; set; }

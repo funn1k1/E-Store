@@ -66,7 +66,6 @@ namespace E_Store2021.Controllers
             return RedirectToAction("Index");
         }
 
-        [AllowAnonymous]
         public IActionResult Remove(int id)
         {
             List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
@@ -79,7 +78,6 @@ namespace E_Store2021.Controllers
             return RedirectToAction("Index");
         }
 
-        [AllowAnonymous]
         public IActionResult UpdateQuantity(int id, int quantity)
         {
             List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");

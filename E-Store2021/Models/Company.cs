@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace E_Store2021.Models
 {
@@ -7,6 +7,7 @@ namespace E_Store2021.Models
     {
         public int CompanyID { get; set; }
 
+        [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
 
         public int Year { get; set; }

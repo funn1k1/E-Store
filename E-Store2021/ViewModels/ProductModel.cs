@@ -8,6 +8,8 @@
 
         public string ImagePath { get; set; }
 
+        public byte[] ProductPicture { get; set; }
+
         public double UnitPrice { get; set; }
     }
 }

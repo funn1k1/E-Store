@@ -22,15 +22,26 @@
     <div class="container">
         <div class="product-card_inner">
             <div class="product-card_img-box @(Model?.Product?.Discount > 0 ? "product-item--sale": "")">
-                <img src="@("~/images/content/" + @Model?.Product?.ImagePath)" asp-append-version="true" class="product-card_img" width="400px" height="400px">
+                @if (Model?.Product?.ProductPicture != null)
+                {
+                <div>
+                    <img id="profilePicture" style="width:400px; height:400px;" src="data:image/*;base64,@(Convert.ToBase64String(Model?.Product?.ProductPicture))">
+                </div>
+                }
+                else
+                {
+                <div>
+                    <img id="profilePicture" style="width:400px; height:400px;" src="">
+                </div>
+                }
                 @if (Model?.Product?.Discount > 0)
                 {
                     <p class="product-card_price-old">
-                        @Model?.Product?.UnitPrice$
+                        $@Model?.Product?.UnitPrice
                     </p>
                 }
                 <p class="product-card_price-new">
-                    @(Math.Round((decimal)(@Model?.Product?.UnitPrice-@Model?.Product?.UnitPrice*@Model?.Product?.Discount/100.0), 2))$
+                    $@(Math.Round((decimal)(@Model?.Product?.UnitPrice-@Model?.Product?.UnitPrice*@Model?.Product?.Discount/100.0), 2))
                 </p>
                 <a class="product-card_link" href="#">
                     Found it cheaper? Lower the price!

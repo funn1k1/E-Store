@@ -54,7 +54,8 @@ namespace E_Store2021.Controllers
                 ID = c.ProductID,
                 ProductName = c.ProductName,
                 ImagePath = c.ImagePath,
-                UnitPrice = c.UnitPrice
+                UnitPrice = c.UnitPrice,
+                ProductPicture = c.ProductPicture
             }).ToListAsync(); 
 
             SelectBox.Categories = new SelectList(categoryModels, "CategoryName", "CategoryName");
@@ -162,8 +163,9 @@ namespace E_Store2021.Controllers
                     ID = p.ProductID,
                     ProductName = p.ProductName,
                     ImagePath = p.ImagePath,
-                    UnitPrice = p.UnitPrice
-                }).ToList();
+                    UnitPrice = p.UnitPrice,
+                    ProductPicture = p.ProductPicture
+            }).ToList();
 
             CompanyViewModel viewModel;
 
@@ -178,7 +180,8 @@ namespace E_Store2021.Controllers
                     ID = p.ProductID,
                     ProductName = p.ProductName,
                     ImagePath = p.ImagePath,
-                    UnitPrice = p.UnitPrice
+                    UnitPrice = p.UnitPrice,
+                    ProductPicture = p.ProductPicture
                 }).ToList() , Companies = companyModels , Countries = countryModels, SubCategories = subCategories };
 
             int pageSize = 9;

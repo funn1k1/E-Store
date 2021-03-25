@@ -9,7 +9,7 @@ namespace E_Store2021.Models
 
         [Required]
         [StringLength(100)]
-        [Display(Name = "Name")]
+        [Display(Name = "SubCategory Name")]
         public string SubCategoryName { get; set; }
 
         [Display(Name = "SubCategory Description")]
