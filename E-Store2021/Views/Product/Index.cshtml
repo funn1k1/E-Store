@@ -1,4 +1,7 @@
-﻿@model E_Store2021.ViewModels.ProductViewModel; 
+﻿@model E_Store2021.ViewModels.ProductViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <div class="breadcrumbs">
     <div class="container">
         <ul class="breadcrumbs_list">
@@ -24,15 +27,15 @@
             <div class="product-card_img-box @(Model?.Product?.Discount > 0 ? "product-item--sale": "")">
                 @if (Model?.Product?.ProductPicture != null)
                 {
-                <div>
-                    <img style="height:400px;" src="data:image/*;base64,@(Convert.ToBase64String(Model?.Product?.ProductPicture))">
-                </div>
+                    <div class="product-card_img-boxinside">
+                        <img style="height:400px;" src="data:image/*;base64,@(Convert.ToBase64String(Model?.Product?.ProductPicture))">
+                    </div>
                 }
                 else
                 {
-                <div>
-                    <img id="profilePicture" style="width:400px; height:400px;" src="">
-                </div>
+                    <div class="product-card_img-boxinside">
+                        <img id="profilePicture" style="width:400px; height:400px;" src="">
+                    </div>
                 }
                 @if (Model?.Product?.Discount > 0)
                 {
@@ -71,44 +74,45 @@
                         <a class="tab product-card_tab tab--active" href="#product-1">Characteristics</a>
                         <a class="tab product-card_tab" href="#product-2">Availability in the store</a>
                     </div>
-                    <div class="tabs-container">
-                        <div id="product-1" class="tabs-content product-card_tab-content tabs-content--active">
-                            <ul class="product-card_list">
-                                <li class="product-card_item">
-                                    <div class="product-card_item-left">
-                                        Manufacturer
-                                    </div>
-                                    <div class="product-card_item-right">
-                                        @Model?.Company.CompanyName
-                                    </div>
-                                </li>
-                                <li class="product-card_item">
-                                    <div class="product-card_item-left">
-                                        Quantity
-                                    </div>
-                                    <div class="product-card_item-right">
-                                        @Model?.Product?.Quantity
-                                    </div>
-                                </li>
-                                <li class="product-card_item">
-                                    <div class="product-card_item-left">
-                                        Year
-                                    </div>
-                                    <div class="product-card_item-right">
-                                        @Model?.Product?.Year
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="product-card_more">
-                                <a href="#">More</a>
-                            </div>
-                            <div class="product-card_btn">
-                                <a class="buy" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model?.Product.ProductID">Buy</a>
-                            </div>
+                </div>
+                <div class="tabs-container">
+                    <div id="product-1" class="tabs-content product-card_tab-content tabs-content--active">
+                        <ul class="product-card_list">
+                            <li class="product-card_item">
+                                <div class="product-card_item-left">
+                                    Manufacturer
+                                </div>
+                                <div class="product-card_item-right">
+                                    @Model?.Company.CompanyName
+                                </div>
+                            </li>
+                            <li class="product-card_item">
+                                <div class="product-card_item-left">
+                                    Quantity
+                                </div>
+                                <div class="product-card_item-right">
+                                    @Model?.Product?.Quantity
+                                </div>
+                            </li>
+                            <li class="product-card_item">
+                                <div class="product-card_item-left">
+                                    Year
+                                </div>
+                                <div class="product-card_item-right">
+                                    @Model?.Product?.Year
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="product-card_more">
+                            <a href="#">More</a>
                         </div>
-                        <div id="product-2" class="tabs-content product-card_tab-content">
-                            <p>@((Model?.Product.Quantity > 0) ? Html.Raw("Available") : Html.Raw("Not available") )</p>
+                        <div class="product-card_btn">
+                            <a class="buy" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model?.Product.ProductID">Buy</a>
                         </div>
+                    </div>
+
+                    <div id="product-2" class="tabs-content product-card_tab-content">
+                        <p>@((Model?.Product.Quantity > 0) ? Html.Raw("Available") : Html.Raw("Not available") )</p>
                     </div>
                 </div>
             </div>
@@ -137,22 +141,22 @@
                         </div>
                         <div class="reviews">
 
-                                @if (Model?.Reviews != null)
-                                    @foreach (var review in @Model.Reviews)
-                                    {
-                                        <div class="reviews_wrapper">
-                                            <div class="review-title_rating">
-                                                <h3>Christopher Lee</h3>
-                                                <a class="rate" href="">
-                                                    <div class="rateYo-review" data-rateyo-rating="5">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <p class="review">
-                                                @review.Text
-                                            </p>
+                            @if (Model?.Reviews != null)
+                                @foreach (var review in @Model.Reviews)
+                                {
+                                    <div class="reviews_wrapper">
+                                        <div class="review-title_rating">
+                                            <h3>Christopher Lee</h3>
+                                            <a class="rate" href="">
+                                                <div class="rateYo-review" data-rateyo-rating="5">
+                                                </div>
+                                            </a>
                                         </div>
-                                    }
+                                        <p class="review">
+                                            @review.Text
+                                        </p>
+                                    </div>
+                                }
                         </div>
                         <div class="rating-form_wrapper">
                             <h3>Add your Comments</h3>
@@ -168,11 +172,11 @@
                                     <div class="review-name_lastname">
                                         <div class="review-name">
                                             <label for="review-input">Name</label>
-                                            <input id="review-input" placeholder="Enter name" type="text">
+                                            <input name="firstName" value="@UserManager.GetUserAsync(User).Result.FirstName" id="review-input" disabled  type="text">
                                         </div>
                                         <div class="review-lastname">
                                             <label for="review-input">LastName</label>
-                                            <input id="review-input" placeholder="Enter LastName" type="text">
+                                            <input name="lastName" value="@UserManager.GetUserAsync(User).Result.LastName" id="review-input" disabled  type="text">
                                         </div>
                                     </div>
                                     <div class="wrapper_your-review">
@@ -207,9 +211,12 @@
                     <a class="tab products_tab" href="#popular-tab-5">Arts</a>
                     <a class="tab products_tab" href="#popular-tab-6">Games</a>
                 </div>
+            </div>
+
                 <div class="tabs-container products_container">
                     <div id="popular-tab-1" class="tabs-content products_content tabs-content--active">
                         <div class="product-slider">
+
                             <div class="product-slider_item">
                                 <div class="product-item_wrapper">
                                     <button class="product-item_favorite" type="button"></button>
@@ -243,7 +250,7 @@
                                     <a class="product-item_notify-link" href="#">
                                         <span>Notify on arrival</span>
                                     </a>
-                                    <a class="product-item product-item--sale" href="#">
+                                    <a class="product-item" href="#">
                                         <p class="product-item_hover-text">
                                             View product
                                         </p>
@@ -259,7 +266,7 @@
                                 </div>
                             </div>
                             <div class="product-slider_item">
-                                <div class="product-item_wrapper product-item_not-available">
+                                <div class="product-item_wrapper">
                                     <button class="product-item_favorite" type="button"></button>
                                     <button class="product-item_basket">
                                         <img src="~/images/cart.png" alt="">
@@ -291,55 +298,7 @@
                                     <a class="product-item_notify-link" href="#">
                                         <span>Notify on arrival</span>
                                     </a>
-                                    <a class="product-item product-item--sale" href="#">
-                                        <p class="product-item_hover-text">
-                                            View product
-                                        </p>
-                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
-                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
-                                        <p class="product-item_price">
-                                            1.520$
-                                        </p>
-                                        <p class="product-item_notify-text">
-                                            Not available
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-slider_item">
-                                <div class="product-item_wrapper product-item_not-available">
-                                    <button class="product-item_favorite" type="button"></button>
-                                    <button class="product-item_basket">
-                                        <img src="~/images/cart.png" alt="">
-                                    </button>
-                                    <a class="product-item_notify-link" href="#">
-                                        <span>Notify on arrival</span>
-                                    </a>
-                                    <a class="product-item product-item--sale" href="#">
-                                        <p class="product-item_hover-text">
-                                            View product
-                                        </p>
-                                        <img class="product-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
-                                        <h4 class="product-item_title">Gaming Laptop Razer Blade 15 2020</h4>
-                                        <p class="product-item_price">
-                                            1.520$
-                                        </p>
-                                        <p class="product-item_notify-text">
-                                            Not available
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-slider_item">
-                                <div class="product-item_wrapper product-item_not-available">
-                                    <button class="product-item_favorite" type="button"></button>
-                                    <button class="product-item_basket">
-                                        <img src="~/images/cart.png" alt="">
-                                    </button>
-                                    <a class="product-item_notify-link" href="#">
-                                        <span>Notify on arrival</span>
-                                    </a>
-                                    <a class="product-item product-item--sale" href="#">
+                                    <a class="product-item" href="#">
                                         <p class="product-item_hover-text">
                                             View product
                                         </p>
@@ -447,5 +406,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>

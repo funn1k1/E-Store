@@ -49,37 +49,43 @@ namespace E_Store2021.Data
                 {
                     Description = "Some category",
                     CategoryName = "Electronics",
-                    ImagePath = "category_1.webp"
+                    ImagePath = "category_1.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_1.webp")
                 },
                 new Category
                 {
                     Description = "Some category",
                     CategoryName = "Computers",
-                    ImagePath = "category_2.webp"
+                    ImagePath = "category_2.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_2.webp")
                 },
                 new Category
                 {
                     Description = "Some category",
                     CategoryName = "Music",
-                    ImagePath = "category_3.webp"
+                    ImagePath = "category_3.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_3.webp")
                 },
                 new Category
                 {
                     Description = "Some category",
                     CategoryName = "Software",
-                    ImagePath = "category_4.webp"
+                    ImagePath = "category_4.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_4.webp")
                 },
                 new Category
                 {
                     Description = "Some category",
                     CategoryName = "Arts",
-                    ImagePath = "category_5.webp"
+                    ImagePath = "category_5.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_5.webp")
                 },
                 new Category
                 {
                     Description = "Some category",
                     CategoryName = "Games",
-                    ImagePath = "category_6.webp"
+                    ImagePath = "category_6.webp",
+                    CategoryPicture = File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}\wwwroot\images\category_6.webp"),
                 },
             };
             _context.Categories.AddRange(categories);

@@ -76,7 +76,7 @@
                     {
                         <a class="categories_item cat1_top" asp-controller="Catalog" asp-action="Index">
                             <div class="categories_item-info">
-                                <h4 class="categories_item-title">Electronics</h4>
+                                <h4 class="categories_item-title">@category.CategoryName</h4>
                                 <p class="categories_item-text">
                                     More Details
                                 </p>
@@ -91,7 +91,7 @@
                     {
                         <a class="categories_item" asp-controller="Catalog" asp-action="Index">
                             <div class="categories_item-info">
-                                <h4 class="categories_item-title">Computers</h4>
+                                <h4 class="categories_item-title">@category.CategoryName</h4>
                                 <p class="categories_item-text">
                                     More Details
                                 </p>
@@ -106,7 +106,7 @@
                     {
                         <a class="categories_item" asp-controller="Catalog" asp-action="Index">
                             <div class="categories_item-info">
-                                <h4 class="categories_item-title">Music</h4>
+                                <h4 class="categories_item-title">@category.CategoryName</h4>
                                 <p class="categories_item-text">
                                     More Details
                                 </p>
@@ -155,19 +155,19 @@
                                             <a class="product-item_notify-link" href="#">
                                                 <span>Notify on arrival</span>
                                             </a>
-                                            <a class="product-item" href="#">
-                                                <p class="product-item_hover-text">
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="@p.ProductID" class="product-item_hover-text">
                                                     View product
-                                                </p>
+                                                </a>
                                                 <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">
                                                 <h4 class="product-item_title">@p.ProductName</h4>
                                                 <p class="product-item_price">
-                                                    1.520$
+                                                    $@p.UnitPrice
                                                 </p>
                                                 <p class="product-item_notify-text">
                                                     Not available
                                                 </p>
-                                            </a>
+                                            </div>
                                         </div>
                                     </div>
                                 }
@@ -178,7 +178,8 @@
                 <div id="product-tab-2" class="tabs-content products_content">
                     <div class="product-slider">
                         @{
-                            foreach (var e in electronics.SubCategories)
+                            var computerCategory = Model.FirstOrDefault(c => c.CategoryName == "Computers");
+                            foreach (var e in computerCategory.SubCategories)
                             {
                                 foreach (var p in e.Products)
                                 {
@@ -191,19 +192,19 @@
                                             <a class="product-item_notify-link" href="#">
                                                 <span>Notify on arrival</span>
                                             </a>
-                                            <a class="product-item" href="#">
-                                                <p class="product-item_hover-text">
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="@p.ProductID" class="product-item_hover-text">
                                                     View product
-                                                </p>
+                                                </a>
                                                 <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">
                                                 <h4 class="product-item_title">@p.ProductName</h4>
                                                 <p class="product-item_price">
-                                                    1.520$
+                                                    $@p.UnitPrice
                                                 </p>
                                                 <p class="product-item_notify-text">
                                                     Not available
                                                 </p>
-                                            </a>
+                                            </div>
                                         </div>
                                     </div>
                                 }
@@ -278,7 +279,7 @@
                                                 <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">
                                                 <h4 class="product-item_title">@p.ProductName</h4>
                                                 <p class="product-item_price">
-                                                    1.520$
+                                                    $@p.UnitPrice
                                                 </p>
                                                 <p class="product-item_notify-text">
                                                     Not available
@@ -314,7 +315,7 @@
                                                 <img class="product-item_img" src="@("~/images/content/" + p.ImagePath)" asp-append-version="true" width="200px" alt="">
                                                 <h4 class="product-item_title">@p.ProductName</h4>
                                                 <p class="product-item_price">
-                                                    1.520$
+                                                    $@p.UnitPrice
                                                 </p>
                                                 <p class="product-item_notify-text">
                                                     Not available

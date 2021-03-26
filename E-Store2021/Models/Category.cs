@@ -14,6 +14,8 @@ namespace E_Store2021.Models
 
         public string ImagePath { get; set; }
 
+        public byte[] CategoryPicture { get; set; }
+
         [Display(Name = "Category Description")]
         public string Description { get; set; }
 

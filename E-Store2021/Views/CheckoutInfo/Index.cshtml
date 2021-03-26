@@ -31,7 +31,7 @@
                             </div>
                             <span class="text-muted">@(item.Quantity)x$@item.Product.UnitPrice</span>
                         </li>
-                    }
+                        }
                 @if (ShoppingCartModel.CouponName != null)
                 {
                     <li class="list-group-item d-flex justify-content-between bg-light">
@@ -86,7 +86,9 @@
             </div>
 
             <form asp-controller="Checkout" asp-action="Index" method="post">
-                <input type="hidden" asp-for="@Model.UserId" value="@UserManager?.GetUserAsync(User)?.Result?.Id"/>
+                <input type="hidden" asp-for="@Model.Total" value="@ShoppingCartModel.Total"/>
+                <input type="hidden" asp-for="@Model.Count" value="@ShoppingCartModel.Count"/>
+                <input type="hidden" asp-for="@Model.UserId" value="@UserManager?.GetUserAsync(User)?.Result?.Id" />
                 <div class="mb-3">
                     <label for="address">Address</label>
                     <input type="text" asp-for="@Model.Address" class="form-control" id="address" placeholder="1234 Main St" required>

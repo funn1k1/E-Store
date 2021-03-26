@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Category>
+@{ 
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<style>
+    a:hover {
+        text-decoration: none;
+        color: none;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">CategoryID</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Category Picture</th>
+                    <th scope="col">Category Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <th scope="row">@category.CategoryID</th>
+                        <td>@category.CategoryName</td>
+                        <td><img src="data:image/*;base64,@(Convert.ToBase64String(category.CategoryPicture))" width="300px" alt="Alternate Text" /></td>
+                        <td>@category.Description</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-categoryId="@category.CategoryID" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                            <a asp-action="Add" class="btn btn-danger"><i class="fas fa-plus"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

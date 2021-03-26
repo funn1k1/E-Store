@@ -69,7 +69,7 @@ namespace E_Store2021.Controllers
         }
 
         [HttpGet]
-        public async Task<ViewResult> Filter(string[] countries, string[] companies, string category, string subCategory, double startPrice, double endPrice, int? pageNumber = 1)
+        public async Task<ViewResult> Filter(string[] countries, string[] companies, string category, string subCategory, double startPrice, double endPrice, string isSale, int? pageNumber = 1)
         {
             List<CategoryModel> categoryModels = await _context.Categories.Include(c => c.SubCategories).ThenInclude(c => c.Products).ThenInclude(c => c.Company)
                 .Where(c => c.CategoryName == category).Select(c => new CategoryModel
@@ -155,17 +155,30 @@ namespace E_Store2021.Controllers
                     }
                 }
             }
-
-
-
-            List<ProductModel> productModels = products.Where(p => prod.Contains(p) || countryProducts.Contains(p)).Select(p => new ProductModel 
+            List<ProductModel> productModels;
+            if (isSale == "on")
+            {
+                productModels = products.Where(p => p.Discount > 0 && isSale.Equals("on")).Select(p => new ProductModel
                 {
                     ID = p.ProductID,
                     ProductName = p.ProductName,
                     ImagePath = p.ImagePath,
                     UnitPrice = p.UnitPrice,
                     ProductPicture = p.ProductPicture
-            }).ToList();
+                }).ToList(); ;
+            }
+            else
+            {
+                productModels = products.Where(p => prod.Contains(p) || countryProducts.Contains(p)).Select(p => new ProductModel
+                {
+                    ID = p.ProductID,
+                    ProductName = p.ProductName,
+                    ImagePath = p.ImagePath,
+                    UnitPrice = p.UnitPrice,
+                    ProductPicture = p.ProductPicture
+                }).ToList();
+            }
+
 
             CompanyViewModel viewModel;
 

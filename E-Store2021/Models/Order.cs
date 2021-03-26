@@ -16,6 +16,10 @@ namespace E_Store2021.Models
 
         public string Country { get; set; }
 
+        public int? Count { get; set; }
+
+        public decimal? Total { get; set; }
+
         public string State { get; set; }
 
         public int Zip { get; set; }

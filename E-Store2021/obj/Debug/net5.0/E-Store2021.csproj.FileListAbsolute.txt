@@ -417,3 +417,7 @@ C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store20
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\ProductsManager\Index.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\ProductsManager\ChangeProduct.cshtml.g.cs
 C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\ProductsManager\AddProduct.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\CategoryManager\Add.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\CategoryManager\Index.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\CategoryManager\Delete.cshtml.g.cs
+C:\Users\yukov\OneDrive\Рабочий стол\New folder (3)\E-Store\E-Store2021\obj\Debug\net5.0\Razor\Views\CategoryManager\Edit.cshtml.g.cs

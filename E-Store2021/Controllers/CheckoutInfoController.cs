@@ -44,8 +44,5 @@ namespace E_Store2021.Controllers
             ViewBag.CountryList = new SelectList(countryList);
             return View();
         }
-
-
-        
     }
 }

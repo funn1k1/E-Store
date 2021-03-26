@@ -16,19 +16,21 @@ namespace E_Store2021.Controllers
 
         private UserManager<ApplicationUser> _userManager;
 
-        private RoleManager<ApplicationUser> _roleManager;
-
-        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<ApplicationUser> roleManager)
+        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _roleManager = roleManager;
         }
 
         public IActionResult Index()
         {
             var user = _userManager?.GetUserAsync(User)?.Result;
+            List<Order> orders = _context.Orders.ToList();
+            return View(orders);
+        }
 
+        public IActionResult Reject()
+        {
             return View();
         }
     }

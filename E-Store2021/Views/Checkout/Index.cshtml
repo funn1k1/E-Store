@@ -14,8 +14,11 @@
         <p>
             Having trouble? <a href="">Contact us</a>
         </p>
+        <p>
+            Your order has been moved to history <a asp-controller="Orders" asp-action="Index">Orders</a>
+        </p>
         <p class="lead">
-            <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a>
+            <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="Index" role="button">Continue to homepage</a>
         </p>
     </div>
 </div>

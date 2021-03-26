@@ -1,0 +1,46 @@
+﻿@model Category
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<style>
+    a:hover {
+        text-decoration: none;
+        color: none;
+    }
+</style>
+<form action="Edit" enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.CategoryName"></label>
+                <input asp-for="@Model.CategoryName" disabled class="form-control" />
+                <span asp-validation-for="@Model.CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description"></label>
+                <input asp-for="@Model.Description" class="form-control" />
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+
+            <label asp-for="@Model.CategoryPicture" style="width: 100%"></label>
+            @if (Model?.CategoryPicture != null)
+            {
+                <img id="profilePicture" style="width:400px; height:400px;" src="data:image/*;base64,@(Convert.ToBase64String(Model.CategoryPicture))">
+            }
+            else
+            {
+                <img id="profilePicture" style="width:400px;height:400px;" src="">
+            }
+            <div class="form-group" id="customFile" lang="es">
+                <input type="file"
+                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                       asp-for="@Model.CategoryPicture"
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                       onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+            </div>
+
+            <input id="update-profile-button" type="submit" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

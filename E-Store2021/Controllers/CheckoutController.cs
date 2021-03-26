@@ -20,7 +20,10 @@ namespace E_Store2021.Controllers
         public async Task<IActionResult> Index(Order order)
         {
             var coupon = _context.Coupons.FirstOrDefault(c => c.Name == ShoppingCartModel.CouponName);
-            _context.Coupons.Remove(coupon);
+            if (coupon != null)
+            {
+                _context.Coupons.Remove(coupon);
+            }
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
             return View();

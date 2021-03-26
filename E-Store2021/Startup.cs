@@ -32,10 +32,13 @@ namespace E_Store2021
                 options => options.UseSqlServer(Configuration.GetConnectionString("AspNetRunConnection")
             ));
 
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                      .AddEntityFrameworkStores<ApplicationDbContext>()
                      .AddDefaultUI()
                      .AddDefaultTokenProviders();
+
+
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
