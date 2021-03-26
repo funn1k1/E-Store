@@ -2,8 +2,8 @@ $(function()
 {
     $('.banner-section_slider').slick({
         dots: true,
-        prevArrow: '<button class="banner-section_slider-btn banner-section_slider-btnprev"><img src="images/left-arrow.png" alt=""></button>',
-        nextArrow: '<button class="banner-section_slider-btn banner-section_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>',
+        prevArrow: '<button class="banner-section_slider-btn banner-section_slider-btnprev"><img src="~/images/left-arrow.png" alt=""></button>',
+        nextArrow: '<button class="banner-section_slider-btn banner-section_slider-btnnext"><img src="~/images/right-arrow.png" alt=""></button>',
 
         responsive: [
             {
@@ -34,8 +34,8 @@ $(function()
     $('.product-slider').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
-        prevArrow: '<button class="product-slider_slider-btn product-slider_slider-btnprev"><img src="images/left-arrow.png" alt=""></button>',
-        nextArrow: '<button class="product-slider_slider-btn product-slider_slider-btnnext"><img src="images/right-arrow.png" alt=""></button>',
+        prevArrow: '<button class="product-slider_slider-btn product-slider_slider-btnprev"><img src="~/images/left-arrow.png" alt=""></button>',
+        nextArrow: '<button class="product-slider_slider-btn product-slider_slider-btnnext"><img src="~/images/right-arrow.png" alt=""></button>',
 
         responsive: [
             {

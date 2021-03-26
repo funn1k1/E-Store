@@ -18,16 +18,16 @@
             <a class="banner-section_item sale-item">
                 <div class="sale-item_top">
                     <div class="sale-item_info">
-                        Stock
+                        SALE
                     </div>
                     <div class="sale-item_price">
-                        <div class="price sale-item_price-new">1.520</div>
-                        <div class="price sale-item_price-old">1.999</div>
+                        <div class="price sale-item_price-new">@(Math.Round((decimal)(ViewBag.Product?.UnitPrice - ViewBag.Product.UnitPrice * ViewBag.Product.Discount / 100), 2))</div>
+                        <div class="price sale-item_price-old">@ViewBag.Product.UnitPrice</div>
                     </div>
                 </div>
-                <img class="sale-item_img" src="~/images/content/image-sale.jpg" width="200px" alt="">
+                <img class="sale-item_img" src="data:image/*;base64,@(Convert.ToBase64String(ViewBag.Product.ProductPicture))" width="200px" alt="">
                 <h5 class="sale-item_title">
-                    Gaming Laptop Razer Blade 15 2020
+                    @ViewBag.Product.ProductName
                 </h5>
                 <div class="sale-item_footer">
                     The promotion is valid until
