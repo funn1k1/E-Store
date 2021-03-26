@@ -336,7 +336,9 @@
         width: 12px;
         height: 8px;
     }
-
+    .footer_top-drop {
+        pointer-events: auto;
+    }
     .footer_top-drop--active::after {
         transform: rotate(180deg);
     }

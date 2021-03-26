@@ -1768,3 +1768,7 @@ body {
 .product-card_btn-mobile {
     display: none;
 }
+
+.footer_top-drop{
+    pointer-events: none;
+}

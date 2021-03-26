@@ -56,170 +56,171 @@
                             <span>By brand</span>
                         </a>
                     </div>
-                    <div class="tabs-container">
-                        <form controller="Index" asp-action="Filter" method="get">
-                            <div id="filter1" class="tabs-content aside-filter_tabs-content tabs-content--active">
+                </div>
+                <div class="tabs-container">
+                    <form controller="Index" asp-action="Filter" method="get">
+                        <div id="filter1" class="tabs-content aside-filter_tabs-content tabs-content--active">
 
 
-                                <ul class="aside-filter_list">
-                                    <li class="aside-filter_item-drop">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Availability</p>
-                                        <div class="aside-filter_content">
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox">
-                                                    In stock
-                                                </label>
-                                            </div>
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox">
-                                                    On request
-                                                </label>
-                                            </div>
+                            <ul class="aside-filter_list">
+                                <li class="aside-filter_item-drop">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Availability</p>
+                                    <div class="aside-filter_content">
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" type="checkbox">
+                                                In stock
+                                            </label>
                                         </div>
-                                    </li>
-                                    <li class="aside-filter_item">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">New items</p>
-                                        <div class="aside-filter_content-row aside-filter_content-radio aside-filter_content-mg">
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" name="radio" type="radio">
-                                                    All
-                                                </label>
-                                            </div>
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" name="radio" type="radio">
-                                                    New Items
-                                                </label>
-                                            </div>
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" name="radio" type="radio">
-                                                    Shares
-                                                </label>
-                                            </div>
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" type="checkbox">
+                                                On request
+                                            </label>
                                         </div>
-                                    </li>
-
-                                    <li class="aside-filter_item-drop">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Price</p>
-                                        <div class="aside-filter_content aside-filter_content-radio aside-filter_content-mg">
-                                            <div class="aside-filter_content-box aside-filter_content-box-price">
-                                                <input type="text" class="js-range-slider" name="my_range" value="" data-min="100" data-max="4000" data-from="1000" data-to="2000" />
-                                                <input type="hidden" id="startPrice" name="startPrice" value="" />
-                                                <input type="hidden" id="endPrice" name="endPrice" value="" />
-                                            </div>
+                                    </div>
+                                </li>
+                                <li class="aside-filter_item">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">New items</p>
+                                    <div class="aside-filter_content-row aside-filter_content-radio aside-filter_content-mg">
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" name="radio" type="radio">
+                                                All
+                                            </label>
                                         </div>
-                                    </li>
-
-                                    <li class="aside-filter_item-list">
-                                        <div class="filter_item-list">
-                                            <p class="filter_item-list-title filter_item-list-select">
-                                                Category
-                                            </p>
-                                            <select class="filter-style" id="category" name="category" asp-items="@SelectBox.Categories">
-                                            </select>
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" name="radio" type="radio">
+                                                New Items
+                                            </label>
                                         </div>
-                                    </li>
-
-                                    @{
-
-                                    }
-
-                                    <li class="aside-filter_item-list">
-                                        <div class="filter_item-list">
-                                            <p class="filter_item-list-title filter_item-list-select">
-                                                Subcategory
-                                            </p>
-                                            <select class="filter-style" id="subCategory" name="subCategory" asp-items="@SelectBox.SubCategories">
-                                            </select>
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" name="radio" type="radio">
+                                                Shares
+                                            </label>
                                         </div>
-                                    </li>
+                                            
+                                    </div>
+                                </li>
 
-                                    <li class="aside-filter_item-drop">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Model</p>
-                                        <div class="aside-filter_content">
-                                            <input type="text" class="filter-search flexdatalist" data-min-length="1" list="filter-search" placeholder="Input Model name">
-                                            <datalist id="filter-search">
-                                                @foreach (var product in Model.ProductsPagination)
-                                                {
-                                                    <option value="@product.ProductName">@product.ProductName</option>
-
-                                                }
-
-                                            </datalist>
+                                <li class="aside-filter_item-drop">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Price</p>
+                                    <div class="aside-filter_content aside-filter_content-radio aside-filter_content-mg">
+                                        <div class="aside-filter_content-box aside-filter_content-box-price">
+                                            <input type="text" class="js-range-slider" name="my_range" value="" data-min="100" data-max="4000" data-from="1000" data-to="2000" />
+                                            <input type="hidden" id="startPrice" name="startPrice" value="" />
+                                            <input type="hidden" id="endPrice" name="endPrice" value="" />
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                    <li class="aside-filter_item-drop btn-checked">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Shares</p>
-                                        <div class="aside-filter_content-row">
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox">
-                                                    <span class="btn-checked_text">SALE</span>
-                                                </label>
-                                            </div>
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox">
-                                                    <span class="btn-checked_text">NEW</span>
-                                                </label>
-                                            </div>
-                                            <div class="aside-filter_content-box">
-                                                <label class="aside-filter_content-label">
-                                                    <input class="filter-style" type="checkbox">
-                                                    <span class="btn-checked_text">HIT</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </li>
+                                <li class="aside-filter_item-list">
+                                    <div class="filter_item-list">
+                                        <p class="filter_item-list-title filter_item-list-select">
+                                            Category
+                                        </p>
+                                        <select class="filter-style" id="category" name="category" asp-items="@SelectBox.Categories">
+                                        </select>
+                                    </div>
+                                </li>
 
-                                    <li class="aside-filter_item-drop">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Countries</p>
-                                        <div class="aside-filter_content">
-                                            @foreach (var country in Model?.Countries)
+                                @{
+
+                                }
+
+                                <li class="aside-filter_item-list">
+                                    <div class="filter_item-list">
+                                        <p class="filter_item-list-title filter_item-list-select">
+                                            Subcategory
+                                        </p>
+                                        <select class="filter-style" id="subCategory" name="subCategory" asp-items="@SelectBox.SubCategories">
+                                        </select>
+                                    </div>
+                                </li>
+
+                                <li class="aside-filter_item-drop">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Model</p>
+                                    <div class="aside-filter_content">
+                                        <input type="text" class="filter-search flexdatalist" data-min-length="1" list="filter-search" placeholder="Input Model name">
+                                        <datalist id="filter-search">
+                                            @foreach (var product in Model.ProductsPagination)
                                             {
-                                                <div class="aside-filter_content-box">
-                                                    <label class="aside-filter_content-label">
-                                                        <input class="filter-style" type="checkbox" name="countries" value="@country.CountryName" @Html.Raw(country.IsChecked ? "checked" : "") />
-                                                        @country.CountryName
-                                                    </label>
-                                                </div>
-                                            }
-                                        </div>
-                                    </li>
-                                    <li class="aside-filter_item-drop aside-filter_item-btn">
-                                        <input class="filter-btn_send filter-btn_send--active" type="submit" value="Select" />
-                                        <p class="filter-extra">Extra options</p>
-                                        <div class="filter-extra-content">More</div>
-                                        <button class="filter-btn_reset" type="submit">Reset filter</button>
-                                    </li>
-                                </ul>
-                            </div>
+                                                <option value="@product.ProductName">@product.ProductName</option>
 
-                            <div id="filter2" class="tabs-content aside-filter_tabs-content">
-                                <ul class="aside-filter_list">
-                                    <li class="aside-filter_item-drop">
-                                        <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Brand</p>
-                                        <div class="aside-filter_content">
-                                            @foreach (var company in Model?.Companies)
-                                            {
-                                                <div class="aside-filter_content-box">
-                                                    <label class="aside-filter_content-label">
-                                                        <input class="filter-style" type="checkbox" name="companies" value="@company.CompanyName" @Html.Raw(company.IsChecked ? "checked" : "") />
-                                                        @company.CompanyName
-                                                    </label>
-                                                </div>
                                             }
+
+                                        </datalist>
+                                    </div>
+                                </li>
+
+                                <li class="aside-filter_item-drop btn-checked">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Shares</p>
+                                    <div class="aside-filter_content-row">
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" type="checkbox">
+                                                <span class="btn-checked_text">SALE</span>
+                                            </label>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" type="checkbox">
+                                                <span class="btn-checked_text">NEW</span>
+                                            </label>
+                                        </div>
+                                        <div class="aside-filter_content-box">
+                                            <label class="aside-filter_content-label">
+                                                <input class="filter-style" type="checkbox">
+                                                <span class="btn-checked_text">HIT</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="aside-filter_item-drop">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Countries</p>
+                                    <div class="aside-filter_content">
+                                        @foreach (var country in Model?.Countries)
+                                        {
+                                            <div class="aside-filter_content-box">
+                                                <label class="aside-filter_content-label">
+                                                    <input class="filter-style" type="checkbox" name="countries" value="@country.CountryName" @Html.Raw(country.IsChecked ? "checked" : "") />
+                                                    @country.CountryName
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+                                </li>
+                                <li class="aside-filter_item-drop aside-filter_item-btn">
+                                    <input class="filter-btn_send filter-btn_send--active" type="submit" value="Select" />
+                                    <p class="filter-extra">Extra options</p>
+                                    <div class="filter-extra-content">More</div>
+                                    <button class="filter-btn_reset" type="submit">Reset filter</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="filter2" class="tabs-content aside-filter_tabs-content">
+                            <ul class="aside-filter_list">
+                                <li class="aside-filter_item-drop">
+                                    <p class="aside-filter_item-title filter_item-drop filter_item-drop--active">Brand</p>
+                                    <div class="aside-filter_content">
+                                        @foreach (var company in Model?.Companies)
+                                        {
+                                            <div class="aside-filter_content-box">
+                                                <label class="aside-filter_content-label">
+                                                    <input class="filter-style" type="checkbox" name="companies" value="@company.CompanyName" @Html.Raw(company.IsChecked ? "checked" : "") />
+                                                    @company.CompanyName
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </aside>
             <div class="catalog_inner-list">
