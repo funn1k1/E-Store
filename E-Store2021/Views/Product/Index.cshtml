@@ -172,11 +172,11 @@
                                     <div class="review-name_lastname">
                                         <div class="review-name">
                                             <label for="review-input">Name</label>
-                                            <input name="firstName" value="@UserManager.GetUserAsync(User).Result.FirstName" id="review-input" disabled  type="text">
+                                            <input name="firstName" value="@UserManager?.GetUserAsync(User)?.Result?.FirstName" id="review-input" disabled  type="text">
                                         </div>
                                         <div class="review-lastname">
                                             <label for="review-input">LastName</label>
-                                            <input name="lastName" value="@UserManager.GetUserAsync(User).Result.LastName" id="review-input" disabled  type="text">
+                                            <input name="lastName" value="@UserManager?.GetUserAsync(User)?.Result?.LastName" id="review-input" disabled  type="text">
                                         </div>
                                     </div>
                                     <div class="wrapper_your-review">

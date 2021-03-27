@@ -5,6 +5,7 @@ namespace E_Store2021.Models
 {
     public class Category
     {
+        [Display(Name = "Category Id")]
         public int CategoryID { get; set; }
 
         [Required]
@@ -14,6 +15,7 @@ namespace E_Store2021.Models
 
         public string ImagePath { get; set; }
 
+        [Display(Name = "Category Picture")]
         public byte[] CategoryPicture { get; set; }
 
         [Display(Name = "Category Description")]
