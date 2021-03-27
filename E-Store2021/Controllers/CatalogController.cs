@@ -2,7 +2,6 @@
 using E_Store2021.Models;
 using E_Store2021.Models.StaticModels;
 using E_Store2021.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -56,14 +55,21 @@ namespace E_Store2021.Controllers
                 ImagePath = c.ImagePath,
                 UnitPrice = c.UnitPrice,
                 ProductPicture = c.ProductPicture
-            }).ToListAsync(); 
+            }).ToListAsync();
 
             SelectBox.Categories = new SelectList(categoryModels, "CategoryName", "CategoryName");
 
             SelectBox.SubCategories = new SelectList(subCatModels, "SubCategoryName", "SubCategoryName");
 
-            CompanyViewModel viewModel = new CompanyViewModel { Countries = countries, Companies = companies, Categories = categoryModels, SubCategories = subCatModels, 
-                                            Products = productModels, ProductsPagination =  PaginatedList<ProductModel>.CreateAsync(productModels, pageNumber, 6)};
+            CompanyViewModel viewModel = new CompanyViewModel
+            {
+                Countries = countries,
+                Companies = companies,
+                Categories = categoryModels,
+                SubCategories = subCatModels,
+                Products = productModels,
+                ProductsPagination = PaginatedList<ProductModel>.CreateAsync(productModels, pageNumber, 6)
+            };
 
             return View(viewModel);
         }
@@ -111,7 +117,6 @@ namespace E_Store2021.Controllers
                 }
             }
 
-
             List<CompanyModel> companyModels = _context.Companies.Include(c => c.Products)
             .Select(c => new CompanyModel
             {
@@ -131,8 +136,6 @@ namespace E_Store2021.Controllers
                 }
             }
 
-
-
             List<CountryModel> countryModels = _context.Countries.Include(c => c.Companies).ThenInclude(p => p.Products)
             .Select(c => new CountryModel
             {
@@ -141,7 +144,6 @@ namespace E_Store2021.Controllers
                 IsChecked = countries.Contains(c.CountryName),
                 Companies = c.Companies
             }).ToList();
-
 
             List<Product> countryProducts = new List<Product>();
 
@@ -179,23 +181,27 @@ namespace E_Store2021.Controllers
                 }).ToList();
             }
 
-
             CompanyViewModel viewModel;
 
             if (productModels.Count > 0)
 
                 viewModel = new CompanyViewModel { Products = productModels, Companies = companyModels, Countries = countryModels, SubCategories = subCategories };
-
             else
 
-                viewModel = new CompanyViewModel { Products = products.Select(p => new ProductModel
+                viewModel = new CompanyViewModel
                 {
-                    ID = p.ProductID,
-                    ProductName = p.ProductName,
-                    ImagePath = p.ImagePath,
-                    UnitPrice = p.UnitPrice,
-                    ProductPicture = p.ProductPicture
-                }).ToList() , Companies = companyModels , Countries = countryModels, SubCategories = subCategories };
+                    Products = products.Select(p => new ProductModel
+                    {
+                        ID = p.ProductID,
+                        ProductName = p.ProductName,
+                        ImagePath = p.ImagePath,
+                        UnitPrice = p.UnitPrice,
+                        ProductPicture = p.ProductPicture
+                    }).ToList(),
+                    Companies = companyModels,
+                    Countries = countryModels,
+                    SubCategories = subCategories
+                };
 
             int pageSize = 9;
 

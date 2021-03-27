@@ -3,7 +3,6 @@ using E_Store2021.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace E_Store2021.Controllers
     public class CategoryManager : Controller
     {
         private ApplicationDbContext _context;
+
         public CategoryManager(ApplicationDbContext context)
         {
             _context = context;
@@ -50,17 +50,14 @@ namespace E_Store2021.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            
             return View(category);
         }
-
 
         public async Task<IActionResult> Delete(int categoryId)
         {
             Category category = await _context.Categories.FirstOrDefaultAsync(c => c.CategoryID == categoryId);
             return View(category);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> DeleteById(int categoryId)

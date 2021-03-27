@@ -1,6 +1,5 @@
 ﻿using E_Store2021.Data;
 using E_Store2021.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -37,17 +36,14 @@ namespace E_Store2021.Controllers
 
             Random rnd = new Random();
 
-           
-
             List<Product> rndProdDisc = await _context.Products.Where(p => p.Discount > 0).ToListAsync();
             List<Product> white = new List<Product>();
 
-
             for (int i = 0; i < rndProdDisc.Count; i++)
             {
-                white.Add(new Product 
-                { 
-                    ProductID = i, 
+                white.Add(new Product
+                {
+                    ProductID = i,
                     ProductName = rndProdDisc[i].ProductName,
                     ProductPicture = rndProdDisc[i].ProductPicture,
                     Discount = rndProdDisc[i].Discount,
