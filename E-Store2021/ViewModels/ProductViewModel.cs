@@ -11,7 +11,9 @@ namespace E_Store2021.ViewModels
 
         public Category Category { get; set; }
 
-        public virtual ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+
+        public ICollection<ApplicationUser> Users { get; set; }
 
         public Company Company { get; internal set; }
     }

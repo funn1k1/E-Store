@@ -2,7 +2,9 @@
 using E_Store2021.Models;
 using E_Store2021.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,21 +14,23 @@ namespace E_Store2021.Controllers
     public class ProductController : Controller
     {
         private ApplicationDbContext _context;
+        private UserManager<ApplicationUser> _userManager;
 
-        public ProductController(ApplicationDbContext _context)
+        public ProductController(ApplicationDbContext _context, UserManager<ApplicationUser> userManager)
         {
             this._context = _context;
+            _userManager = userManager;
         }
 
         [HttpGet]
         public IActionResult Index(int id)
         {
-            ProductViewModel product = new ProductController(_context).CreateProduct(id);
+            ProductViewModel product = new ProductController(_context, _userManager).CreateProduct(id);
 
             return View(product);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> AddReview(int? id, string text)
         {
             if (id == null)
@@ -38,13 +42,14 @@ namespace E_Store2021.Controllers
             {
                 Text = text,
                 ProductID = productId,
+                UserId = _userManager.GetUserId(User),
             };
 
             _context.Reviews.Add(review);
 
             await _context.SaveChangesAsync();
 
-            ProductViewModel product = new ProductController(_context).CreateProduct(id);
+            ProductViewModel product = new ProductController(_context, _userManager).CreateProduct(id);
 
             return View("Index", product);
         }
@@ -55,7 +60,7 @@ namespace E_Store2021.Controllers
 
             int? productID = product?.ProductID;
 
-            List<Review> reviews = _context.Reviews.Where(r => r.ProductID == productID).ToList();
+            List<Review> reviews = _context.Reviews.Include(u => u.User).Where(r => r.ProductID == productID).ToList();
 
             int? subCategoryId = product?.SubCategoryID;
 

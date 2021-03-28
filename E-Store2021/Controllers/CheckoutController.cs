@@ -17,6 +17,12 @@ namespace E_Store2021.Controllers
 
         public async Task<IActionResult> Index(Order order)
         {
+            await Add(order);
+            return View();
+        }
+
+        public async Task Add(Order order)
+        {
             var coupon = _context.Coupons.FirstOrDefault(c => c.Name == ShoppingCartModel.CouponName);
             if (coupon != null)
             {
@@ -24,7 +30,6 @@ namespace E_Store2021.Controllers
             }
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
-            return View();
         }
     }
 }

@@ -15,6 +15,10 @@ namespace E_Store2021.Models
 
         public virtual Product Product { get; set; }
 
+        public string UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

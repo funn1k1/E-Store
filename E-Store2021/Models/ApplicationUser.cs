@@ -13,6 +13,7 @@ namespace E_Store2021.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Display(Name = "Profile Picture")]
         public byte[] ProfilePicture { get; set; }
 
         public int UsernameChangeLimit { get; set; } = 10;
@@ -26,5 +27,7 @@ namespace E_Store2021.Models
         public ICollection<Order> Orders { get; set; }
 
         public ICollection<Coupon> Coupons { get; set; }
+
+        public ICollection<Review> Reviews { get; set; }
     }
 }
