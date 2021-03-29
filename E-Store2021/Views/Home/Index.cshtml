@@ -169,16 +169,16 @@
                             var electronics = Model.FirstOrDefault(c => c.CategoryName == "Electronics");
                             if (electronics != null)
                             {
-                                foreach (var e in electronics.SubCategories)
+                                foreach (var sub in electronics.SubCategories)
                                 {
-                                    foreach (var p in e.Products)
+                                    foreach (var p in sub.Products)
                                     {
                                         <div class="product-slider_item">
                                             <div class="product-item_wrapper">
                                                 <button class="product-item_favorite" type="button"></button>
-                                                <button class="product-item_basket">
-                                                    <img src="~/images/cart.png" alt="">
-                                                </button>
+                                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                    <img class="cart-img" src="~/images/cart.png" alt="">
+                                                </a>
                                                 <a class="product-item_notify-link" href="#">
                                                     <span>Notify on arrival</span>
                                                 </a>
@@ -217,16 +217,16 @@
                             var computerCategory = Model.FirstOrDefault(c => c.CategoryName == "Computers");
                             if (computerCategory != null)
                             {
-                                foreach (var e in computerCategory.SubCategories)
+                                foreach (var sub in computerCategory.SubCategories)
                                 {
-                                    foreach (var p in e.Products)
+                                    foreach (var p in sub.Products)
                                     {
                                         <div class="product-slider_item">
                                             <div class="product-item_wrapper">
                                                 <button class="product-item_favorite" type="button"></button>
-                                                <button class="product-item_basket">
-                                                    <img src="~/images/cart.png" alt="">
-                                                </button>
+                                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                    <img class="cart-img" src="~/images/cart.png" alt="">
+                                                </a>
                                                 <a class="product-item_notify-link" href="#">
                                                     <span>Notify on arrival</span>
                                                 </a>
@@ -259,16 +259,184 @@
                     </div>
                 </div>
                 <div id="product-tab-3" class="tabs-content products_content">
-                    Slider3
+                    @{
+                        var musicCategory = Model.FirstOrDefault(c => c.CategoryName == "Music");
+                        if (musicCategory != null)
+                        {
+                            foreach (var sub in musicCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="product-tab-4" class="tabs-content products_content">
-                    Slider4
+                    @{
+                        var softCategory = Model.FirstOrDefault(c => c.CategoryName == "Software");
+                        if (softCategory != null)
+                        {
+                            foreach (var sub in softCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="product-tab-5" class="tabs-content products_content">
-                    Slider5
+                    @{
+                        var artsCategory = Model.FirstOrDefault(c => c.CategoryName == "Arts");
+                        if (artsCategory != null)
+                        {
+                            foreach (var sub in artsCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="product-tab-6" class="tabs-content products_content">
-                    Slider6
+                    @{
+                        var gamesCategory = Model.FirstOrDefault(c => c.CategoryName == "Games");
+                        if (gamesCategory != null)
+                        {
+                            foreach (var sub in gamesCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div class="product_more">
                     <a class="product_more-link" href="#">Show more</a>
@@ -307,16 +475,16 @@
                         @{
                             if (electronics != null)
                             {
-                                foreach (var e in electronics.SubCategories)
+                                foreach (var sub in electronics.SubCategories)
                                 {
-                                    foreach (var p in e.Products)
+                                    foreach (var p in sub.Products)
                                     {
                                         <div class="product-slider_item">
                                             <div class="product-item_wrapper">
                                                 <button class="product-item_favorite" type="button"></button>
-                                                <button class="product-item_basket">
-                                                    <img src="~/images/cart.png" alt="">
-                                                </button>
+                                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                    <img class="cart-img" src="~/images/cart.png" alt="">
+                                                </a>
                                                 <a class="product-item_notify-link" href="#">
                                                     <span>Notify on arrival</span>
                                                 </a>
@@ -352,18 +520,18 @@
                 <div id="popular-tab-2" class="tabs-content products_content">
                     <div class="product-slider">
                         @{
-                            if (electronics != null)
+                            if (computerCategory != null)
                             {
-                                foreach (var e in electronics.SubCategories)
+                                foreach (var sub in computerCategory.SubCategories)
                                 {
-                                    foreach (var p in e.Products)
+                                    foreach (var p in sub.Products)
                                     {
                                         <div class="product-slider_item">
                                             <div class="product-item_wrapper">
                                                 <button class="product-item_favorite" type="button"></button>
-                                                <button class="product-item_basket">
-                                                    <img src="~/images/cart.png" alt="">
-                                                </button>
+                                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                    <img class="cart-img" src="~/images/cart.png" alt="">
+                                                </a>
                                                 <a class="product-item_notify-link" href="#">
                                                     <span>Notify on arrival</span>
                                                 </a>
@@ -389,24 +557,187 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        }
                                     }
                                 }
-
                             }
-                        }
                     </div>
                 </div>
                 <div id="popular-tab-3" class="tabs-content products_content">
-                    Slider3
+                    @{
+                        if (musicCategory != null)
+                        {
+                            foreach (var sub in musicCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="popular-tab-4" class="tabs-content products_content">
-                    Slider4
+                    @{
+                        if (softCategory != null)
+                        {
+                            foreach (var sub in softCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="popular-tab-5" class="tabs-content products_content">
-                    Slider5
+                    @{
+                        if (artsCategory != null)
+                        {
+                            foreach (var sub in artsCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
                 <div id="popular-tab-6" class="tabs-content products_content">
-                    Slider6
+                    @{
+                        if (gamesCategory != null)
+                        {
+                            foreach (var sub in gamesCategory.SubCategories)
+                            {
+                                foreach (var p in sub.Products)
+                                {
+                                    <div class="product-slider_item">
+                                        <div class="product-item_wrapper">
+                                            <button class="product-item_favorite" type="button"></button>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.ProductID" class="product-item_basket">
+                                                <img class="cart-img" src="~/images/cart.png" alt="">
+                                            </a>
+                                            <a class="product-item_notify-link" href="#">
+                                                <span>Notify on arrival</span>
+                                            </a>
+                                            <div class="product-item" href="#">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@p.ProductID" class="product-item_hover-text">
+                                                    View product
+                                                </a>
+                                                @if (p.ProductPicture != null)
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64,@(Convert.ToBase64String(p.ProductPicture))" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="product-item_img" src="data:image/*;base64" asp-append-version="true" width="200px" alt="">
+                                                }
+                                                <h4 class="product-item_title">@p.ProductName</h4>
+                                                <p class="product-item_price">
+                                                    $@p.UnitPrice
+                                                </p>
+                                                <p class="product-item_notify-text">
+                                                    Not available
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
             </div>
         </div>
