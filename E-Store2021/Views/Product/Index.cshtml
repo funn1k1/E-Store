@@ -6,13 +6,13 @@
     <div class="container">
         <ul class="breadcrumbs_list">
             <li class="breadcrumbs_list-item">
-                <a href="#">Home</a>
+                <a asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="breadcrumbs_list-item">
-                <a href="#">@Model?.Category?.CategoryName</a>
+                <a asp-controller="Catalog" asp-action="Index">@Model?.Category?.CategoryName</a>
             </li>
             <li class="breadcrumbs_list-item">
-                <a href="#">@Model?.SubCategory?.SubCategoryName</a>
+                <a asp-controller="Catalog" asp-action="Index">@Model?.SubCategory?.SubCategoryName</a>
             </li>
             <li class="breadcrumbs_list-item">
                 <a href="#">@Model?.Product?.ProductName</a>
@@ -106,9 +106,13 @@
                         <div class="product-card_more">
                             <a href="#">More</a>
                         </div>
-                        <div class="product-card_btn">
-                            <a class="buy" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model?.Product.ProductID">Buy</a>
-                        </div>
+                        @if (Model?.Product?.Quantity > 0)
+                        {
+                            <div class="product-card_btn ">
+                                <a class="buy" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model?.Product.ProductID">Buy</a>
+                            </div>
+                        }
+
                     </div>
 
                     <div id="product-2" class="tabs-content product-card_tab-content">
@@ -122,7 +126,7 @@
 
 <section class="card_tabs">
     <div class="container">
-        <div class="tas-wrapper">
+        <div class="tabs-wrapper">
             <div class="tabs card_tab-box">
                 <a class="tab card_tab" href="#product-card_tabs-1">About Product</a>
                 <a class="tab card_tab" href="#product-card_tabs-2">Characteristics</a>
@@ -131,6 +135,7 @@
                 <a class="tab card_tab" href="#product-card_tabs-5">Service</a>
                 <a class="tab card_tab" href="#product-card_tabs-6">Guarantee</a>
             </div>
+        </div>
             <div class="tabs-container">
                 <div id="product-card_tabs-1" class="card_tab-content tabs-content">content</div>
                 <div id="product-card_tabs-2" class="card_tab-content tabs-content">content</div>
@@ -193,7 +198,6 @@
                 <div id="product-card_tabs-6" class="card_tab-content tabs-content">content</div>
             </div>
         </div>
-    </div>
 </section>
 
 <section class="products">

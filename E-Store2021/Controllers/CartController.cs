@@ -1,4 +1,5 @@
 ﻿using E_Store2021.Data;
+using E_Store2021.Enums;
 using E_Store2021.Helpers;
 using E_Store2021.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -78,14 +79,24 @@ namespace E_Store2021.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult UpdateQuantity(int id, int quantity)
+        public IActionResult UpdateQuantity(int id, int state)
         {
             List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
 
             int index = IsExist(id);
 
+            switch (state)
+            {
+                case 0:
+                    cart[index].Product.Quantity += 1;
+                    break;
+                case 1:
+                    cart[index].Product.Quantity -= 1;
+                    break;
+            }
 
-            return View();
+
+            return View(nameof(Index));
         }
 
         [HttpPost]
@@ -95,7 +106,7 @@ namespace E_Store2021.Controllers
             {
                 var coupon = _context.Coupons.FirstOrDefault(c => c.Name == couponName);
                 var user = userManager.FindByIdAsync(id);
-                if (user.GetAwaiter().GetResult().Id == coupon.UserId)
+                if (user.GetAwaiter().GetResult().Id == coupon.UserId && coupon.ExpirationDate > DateTime.Now)
                 {
                     ShoppingCartModel.SpecialPrice = Math.Round((decimal)(ShoppingCartModel.Total - ShoppingCartModel.Total * (decimal)coupon.Discount / 100), 2);
                     ShoppingCartModel.Discount = coupon.Discount;

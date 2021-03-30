@@ -6,7 +6,7 @@
     <div class="container">
         <ul class="breadcrumbs_list">
             <li class="breadcrumbs_list-item">
-                <a href="#">Home</a>
+                <a asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="breadcrumbs_list-item">
                 <span href="#">Electronics</span>
@@ -28,11 +28,6 @@
                 <button>More</button>
             </div>
             <div class="catalog_filter-btn">
-                <select class="filter-style select-item">
-                    <option value="">By popularity</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                </select>
                 <button class="catalog_filter-btngrid catalog_filter-button catalog_filter-button--active">
                     <img src="~/images/grid-btn.png" alt="">
                 </button>
@@ -316,6 +311,7 @@
                 }
             })
         });
+
         $('.aside_btn').on('click', function () {
             $(this).next().slideToggle();
         });

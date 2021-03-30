@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Coupon>;
+@using E_Store2021.ViewModels
+@using E_Store2021.Models.StaticModels
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<h1>Coupons Manager</h1>
+<form asp-action="Index" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            @if (ViewBag.TextMess != null)
+            {
+                <div class="text-success">@ViewBag.TextMess</div>
+            }
+            else
+            {
+                <div class="text-danger">@ViewBag.TextMess</div>
+            }
+            <div class="form-group">
+                <label>Coupon Name</label>
+                <input name="couponName" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Coupon Discount</label>
+                <input name="discount" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Coupon Expiration Date</label>
+                <input name="dateTime" type="datetime-local" class="form-control" />
+            </div>
+            <input id="update-profile-button" type="submit" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

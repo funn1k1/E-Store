@@ -3,6 +3,7 @@ using E_Store2021.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,10 +45,20 @@ namespace E_Store2021.Controllers
                     category.CategoryPicture = dataStream.ToArray();
                 }
             }
+            
             if (ModelState.IsValid)
             {
-                _context.Categories.Update(category);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Categories.Update(category);
+                    await _context.SaveChangesAsync();
+                    ViewBag.TextMess = "Products changed successfully";
+                }
+                catch(Exception ex)
+                {
+                    ViewBag.TextMess = $"Error Occured:\n{ex.Message}";
+                }
+                
             }
 
             return View(category);

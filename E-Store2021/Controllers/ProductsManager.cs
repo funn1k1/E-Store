@@ -37,6 +37,7 @@ namespace E_Store2021.Controllers
                 productViewModel.Product = product;
                 productsViewModel.Add(productViewModel);
             }
+
             return View(productsViewModel);
         }
 
@@ -90,17 +91,28 @@ namespace E_Store2021.Controllers
             {
                 return View();
             }
-            if (Request.Form.Files.Count > 0)
+
+            try
             {
-                IFormFile file = Request.Form.Files.FirstOrDefault();
-                using (var dataStream = new MemoryStream())
+                if (Request.Form.Files.Count > 0)
                 {
-                    await file.CopyToAsync(dataStream);
-                    product.ProductPicture = dataStream.ToArray();
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        product.ProductPicture = dataStream.ToArray();
+                    }
                 }
+
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+                ViewBag.TextMess = "Products changed successfully";
+                
             }
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            catch (Exception ex)
+            {
+                ViewBag.TextMess = $"Error Occured:\n{ex.Message}";
+            }
             return View();
         }
     }

@@ -24,11 +24,15 @@ namespace E_Store2021.Controllers
         public async Task Add(Order order)
         {
             var coupon = _context.Coupons.FirstOrDefault(c => c.Name == ShoppingCartModel.CouponName);
+            
             if (coupon != null)
             {
                 _context.Coupons.Remove(coupon);
+
             }
+
             _context.Orders.Add(order);
+
             await _context.SaveChangesAsync();
         }
     }
