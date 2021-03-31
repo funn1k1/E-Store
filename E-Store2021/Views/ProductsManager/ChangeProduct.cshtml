@@ -1,10 +1,12 @@
 ﻿@model Product
+
 @{
     ViewData["Title"] = "Product";
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
+
 <h4>@ViewData["Title"]</h4>
-<form id="profile-form" asp-action="ChangeProduct" enctype="multipart/form-data"  method="post">
+<form id="profile-form" asp-controller="ProductsManager" asp-action="ChangeProduct" enctype="multipart/form-data"  method="post">
     <div class="row">
         <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

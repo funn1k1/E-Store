@@ -52,12 +52,6 @@ namespace E_Store2021.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeProduct(Product product)
         {
-            Product prod = _context.Products.FirstOrDefault(p => p.ProductID == product.ProductID);
-
-            prod.ProductName = product.ProductName;
-            prod.Quantity = product.Quantity;
-            prod.Description = product.Description;
-            prod.Discount = product.Discount;
 
             if (Request.Form.Files.Count > 0)
             {
@@ -65,13 +59,13 @@ namespace E_Store2021.Controllers
                 using (var dataStream = new MemoryStream())
                 {
                     await file.CopyToAsync(dataStream);
-                    prod.ProductPicture = dataStream.ToArray();
+                    product.ProductPicture = dataStream.ToArray();
                 }
             }
 
-            _context.Products.Update(prod);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
-            return View(prod);
+            return View(product);
         }
 
         [HttpGet]

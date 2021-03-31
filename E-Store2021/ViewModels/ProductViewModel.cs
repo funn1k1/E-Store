@@ -16,5 +16,7 @@ namespace E_Store2021.ViewModels
         public ICollection<ApplicationUser> Users { get; set; }
 
         public Company Company { get; internal set; }
+
+        public ICollection<Category> Categories { get; set; }
     }
 }

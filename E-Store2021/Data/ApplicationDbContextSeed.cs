@@ -147,6 +147,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Apple").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -161,6 +162,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Apple").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -175,6 +177,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Xiaomi").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -189,6 +192,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Canon").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -203,6 +207,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Panasonic").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -217,6 +222,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "CEDITA").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -231,6 +237,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "TOZO").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -245,6 +252,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "TOZO").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -259,6 +267,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 2,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Razer").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -273,6 +282,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 0,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Sony").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -287,6 +297,7 @@ namespace E_Store2021.Data
                     Quantity = 10,
                     Discount = 10,
                     CompanyID = companies.FirstOrDefault(c => c.CompanyName == "Sony").CompanyID,
+                    ExpDiscountDate = DateTime.Now,
                 },
             };
 

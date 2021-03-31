@@ -79,6 +79,7 @@ namespace E_Store2021.Controllers
                 Category = category,
                 Reviews = reviews,
                 Company = company,
+                Categories = _context.Categories.ToList(),
             };
 
             return productView;

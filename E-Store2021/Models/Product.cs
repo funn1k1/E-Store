@@ -39,10 +39,9 @@ namespace E_Store2021.Models
 
         public virtual Company Company { get; set; }
 
-        
-
         public ICollection<Review> Reviews { get; set; }
 
         public virtual SubCategory SubCategory { get; set; }
+        public DateTime ExpDiscountDate { get; internal set; }
     }
 }
